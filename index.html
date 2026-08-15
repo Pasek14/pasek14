@@ -3,217 +3,290 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Pertanyaan Penting Abad Ini! 💖</title>
+  <title>URGENT PROTOCOL FOR ANITA // DO NOT IGNORE ⚡</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;700;800;900&display=swap" rel="stylesheet">
+  
   <style>
     * {
       box-sizing: border-box;
       margin: 0;
       padding: 0;
-      font-family: 'Poppins', 'Comic Sans MS', cursive, sans-serif;
+      font-family: 'Plus Jakarta Sans', sans-serif;
     }
 
     body {
-      background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 99%, #fecfef 100%);
+      background-color: #0d0d12;
+      background-image: 
+        radial-gradient(at 0% 0%, rgba(255, 0, 128, 0.25) 0px, transparent 50%),
+        radial-gradient(at 100% 100%, rgba(112, 0, 255, 0.25) 0px, transparent 50%);
       min-height: 100vh;
       display: flex;
       justify-content: center;
       align-items: center;
       text-align: center;
-      overflow: hidden;
+      overflow-x: hidden;
       padding: 20px;
+      color: #fff;
     }
 
     .card {
-      background: rgba(255, 255, 255, 0.9);
-      padding: 30px;
-      border-radius: 25px;
-      box-shadow: 0 15px 30px rgba(0,0,0,0.15);
-      max-width: 450px;
+      background: rgba(22, 22, 30, 0.85);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      padding: 40px 30px;
+      border-radius: 32px;
+      box-shadow: 0 30px 60px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+      max-width: 480px;
       width: 100%;
       position: relative;
     }
 
+    .badge {
+      display: inline-block;
+      padding: 6px 14px;
+      background: rgba(255, 0, 128, 0.15);
+      border: 1px solid rgba(255, 0, 128, 0.4);
+      color: #ff3399;
+      font-weight: 800;
+      font-size: 0.75rem;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      border-radius: 100px;
+      margin-bottom: 20px;
+    }
+
     .page {
       display: none;
-      animation: fadeIn 0.5s ease-in-out;
+      animation: slideUp 0.4s cubic-bezier(0.16, 1, 0.3, 1);
     }
 
     .page.active {
       display: block;
     }
 
-    h1, h2 {
-      color: #ff477e;
-      margin-bottom: 15px;
-      font-size: 1.5rem;
+    /* TEKS MENONJOL & BOLD */
+    h1 {
+      font-weight: 900;
+      font-size: 2.1rem;
+      line-height: 1.2;
+      letter-spacing: -0.5px;
+      margin-bottom: 16px;
+      background: linear-gradient(135deg, #ffffff 0%, #a5a5a5 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .highlight-pink {
+      background: linear-gradient(135deg, #ff3399 0%, #ff6600 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
     }
 
     p {
-      color: #555;
-      font-size: 1.1rem;
-      margin-bottom: 25px;
-      line-height: 1.5;
+      color: #a0a0b0;
+      font-size: 1.05rem;
+      font-weight: 500;
+      margin-bottom: 30px;
+      line-height: 1.6;
     }
 
     .emoji-img {
-      font-size: 4rem;
-      margin-bottom: 15px;
+      font-size: 3.8rem;
+      margin-bottom: 10px;
       display: inline-block;
-      animation: bounce 1.5s infinite;
+      filter: drop-shadow(0 0 15px rgba(255, 51, 153, 0.3));
     }
 
     .btn-container {
       display: flex;
-      justify-content: center;
-      gap: 15px;
-      flex-wrap: wrap;
+      flex-direction: column;
+      gap: 12px;
     }
 
     button {
-      background-color: #ff477e;
-      color: white;
+      background: #ffffff;
+      color: #0d0d12;
       border: none;
-      padding: 12px 25px;
+      padding: 16px 24px;
       font-size: 1rem;
-      font-weight: bold;
-      border-radius: 50px;
+      font-weight: 800;
+      border-radius: 16px;
       cursor: pointer;
-      transition: transform 0.2s, background-color 0.2s;
-      box-shadow: 0 5px 15px rgba(255, 71, 126, 0.4);
+      transition: all 0.2s ease;
+      box-shadow: 0 4px 20px rgba(255, 255, 255, 0.15);
     }
 
     button:hover {
-      background-color: #ff0055;
-      transform: scale(1.05);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(255, 255, 255, 0.25);
+      background: #f0f0f0;
+    }
+
+    button.btn-alt {
+      background: rgba(255, 255, 255, 0.05);
+      color: #ffffff;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      box-shadow: none;
+    }
+
+    button.btn-alt:hover {
+      background: rgba(255, 255, 255, 0.1);
     }
 
     #btn-kabur {
       position: relative;
     }
 
-    /* Efek Pop-up / Overlay Lucu */
+    /* Pop-up Overlay */
     .overlay {
       display: none;
       position: fixed;
       top: 0; left: 0; width: 100%; height: 100%;
-      background: rgba(0,0,0,0.6);
+      background: rgba(0, 0, 0, 0.75);
+      backdrop-filter: blur(8px);
       justify-content: center;
       align-items: center;
       z-index: 100;
+      padding: 20px;
     }
 
     .popup {
-      background: white;
-      padding: 25px;
-      border-radius: 20px;
-      max-width: 320px;
+      background: #181824;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      padding: 30px 25px;
+      border-radius: 24px;
+      max-width: 360px;
+      width: 100%;
       text-align: center;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
       animation: popIn 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     }
 
     .popup h3 {
-      color: #ff477e;
+      color: #ff3399;
+      font-weight: 800;
+      font-size: 1.2rem;
       margin-bottom: 10px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
     }
 
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(10px); }
+    .popup p {
+      color: #d0d0e0;
+      font-size: 1rem;
+      margin-bottom: 20px;
+    }
+
+    .music-player-hint {
+      position: fixed;
+      bottom: 15px;
+      font-size: 0.75rem;
+      color: #666;
+      letter-spacing: 0.5px;
+    }
+
+    @keyframes slideUp {
+      from { opacity: 0; transform: translateY(20px); }
       to { opacity: 1; transform: translateY(0); }
     }
 
     @keyframes popIn {
-      from { transform: scale(0.5); opacity: 0; }
+      from { transform: scale(0.8); opacity: 0; }
       to { transform: scale(1); opacity: 1; }
-    }
-
-    @keyframes bounce {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-10px); }
     }
   </style>
 </head>
 <body>
 
-  <!-- Musik Pengiring -->
-  <!-- Ganti link lagu di bawah dengan file lagu Merry Christmas Mr. Lawrence / Miss You milikmu -->
-  <audio id="bg-music" loop>
-    <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
+  <!-- Audio Lagu: Alex Crichton - Merry Christmas, i miss you -->
+  <audio id="bg-music" loop preload="auto">
+    <source src="https://cdn.pixabay.com/download/audio/2022/11/06/audio_c9b81ddf7d.mp3" type="audio/mpeg">
   </audio>
 
   <div class="card">
     
-    <!-- Halaman 1 -->
+    <!-- HALAMAN 1 -->
     <div class="page active" id="page1">
-      <div class="emoji-img">🕵️‍♂️✨</div>
-      <h1>Deteksi Bahaya!</h1>
-      <p>Sistem mendeteksi ada wanita beracun (beracun karena terlalu lucu sampai bikin jantungan). Apakah itu kamu?</p>
+      <span class="badge">STAGE 1 // SECURITY CHECK</span>
+      <div class="emoji-img">🚨🤖</div>
+      <h1>Sistem Mendeteksi <span class="highlight-pink">Threat Berbahaya</span></h1>
+      <p>Ada cewek bernama <strong style="color: #fff;">Anita</strong> yang mukanya terlalu <strong style="color: #fff;">cute</strong> sampai bikin krisis fokus tiap hari. Ngaku aja Ta, lu pelakunya kan?</p>
       <div class="btn-container">
-        <button onclick="nextPage(1, 'Bohong banget kalau enggak! Tapi oke, lanjut... 😜')">Bukan, aku bidadari 👼</button>
-        <button onclick="nextPage(1, 'Mengaku juga akhirnya! Berani jujur itu hebat 😆')">Iya, aku orangnya 🙈</button>
+        <button onclick="nextPage(1, 'Gak usah ngelak Anita, bukti digital udah jelas 💥')">Fitnah! Gue itu bidadari 😇</button>
+        <button class="btn-alt" onclick="nextPage(1, 'Jujur itu keren Ta. Poin lu nambah 100xp 😎')">Iya gue, kenapa? Masalah? 🤨</button>
       </div>
     </div>
 
-    <!-- Halaman 2 -->
+    <!-- HALAMAN 2 -->
     <div class="page" id="page2">
-      <div class="emoji-img">📜⚖️</div>
-      <h1>Pertanyaan Hukum</h1>
-      <p>Menurut UUD Percintaan, kamu dituduh mencuri hatiku tanpa izin. Kamu mau bayar denda pakai apa?</p>
+      <span class="badge">STAGE 2 // REAL TALK</span>
+      <div class="emoji-img">💀📄</div>
+      <h1>Peringatan <span class="highlight-pink">Pelanggaran Hak Cipta</span></h1>
+      <p>Anita dituduh nyuri pikiran gue 24/7 tanpa izin. Denda adm-nya mau dibayar pake apa nih Ta?</p>
       <div class="btn-container">
-        <button onclick="nextPage(2, 'Struk pembayarannya langsung masuk ke hati ya! ❤️')">Bayar pakai senyuman 😊</button>
-        <button onclick="nextPage(2, 'Setuju! Kontrak berlaku seumur hidup tanpa refund! 📝')">Tanggung jawab seumur hidup 💍</button>
+        <button onclick="nextPage(2, 'Deal! Kontrak seumur hidup sama Anita tanpa refund 📝🔥')">Tanggung jawab seumur hidup 🤝</button>
+        <button class="btn-alt" onclick="nextPage(2, 'Struk pembayarannya langsung masuk ke hati ya Ta 💳')">Pake pap senyum tiap pagi 🤳</button>
       </div>
     </div>
 
-    <!-- Halaman 3 -->
+    <!-- HALAMAN 3 -->
     <div class="page" id="page3">
-      <div class="emoji-img">🔮✨</div>
-      <h1>Ramalan Masa Depan</h1>
-      <p>Menurut ramalan cuaca hari ini, ada 100% peluang kamu bakal bikin aku kangen tiap detik. Gimana tanggapanmu?</p>
+      <span class="badge">STAGE 3 // ALGORITMA MATCH</span>
+      <div class="emoji-img">🔮📡</div>
+      <h1>Prediksi <span class="highlight-pink">Algoritma AI</span></h1>
+      <p>Hasil kalkulasi bilang kalau gue gak bareng Anita, persentase keacakan hidup bakal naik 99%. Reaksi lu gimana Ta?</p>
       <div class="btn-container">
-        <button onclick="nextPage(3, 'Tuh kan! Emang enggak bisa jauh-jauh dari aku 😜')">Memang aku kangenin 😝</button>
-        <button onclick="nextPage(3, 'Duh, awas beneran pingsan ya! 🚑💖')">Siap-siap banting HP karena salting 😳</button>
+        <button onclick="nextPage(3, 'Tuh kan, emang kita kombo yang gak bisa dikalahin 🚀')">AI-nya bener, seram amat 🤯</button>
+        <button class="btn-alt" onclick="nextPage(3, 'Santuy Ta, tenang aja, lu aman sama gue 😜')">Gue yang bakal banting HP karena salting 🙈</button>
       </div>
     </div>
 
-    <!-- Halaman 4 -->
+    <!-- HALAMAN 4 -->
     <div class="page" id="page4">
-      <div class="emoji-img">🥺👉👈</div>
-      <h1>Ujian Kesabaran</h1>
-      <p>Jawab yang jujur ya... Mau enggak kamu lanjut ke jenjang yang lebih serius sama aku?</p>
+      <span class="badge">STAGE 4 // FINAL VERIFICATION</span>
+      <div class="emoji-img">🎯⚡</div>
+      <h1>No More <span class="highlight-pink">Bercanda</span></h1>
+      <p>Gue seriusan nih Ta. Lu mau gak kita naik level dan ngejalani semuanya bareng-bareng ke depannya?</p>
       <div class="btn-container">
-        <button onclick="nextPage(4, 'Pilihan yang sangat cerdas! Mari kita lanjut ke penentuan! 🚀')">Mau banget! 🥰</button>
-        <button id="btn-kabur" onmouseover="kabur()" onclick="kabur()">Enggak mau 😜</button>
+        <button onclick="nextPage(4, 'Pilihan paling logis & terbaik abad ini buat Anita 💥🔥')">GAS LAH, MAU BANGET! 🚀</button>
+        <button class="btn-alt" id="btn-kabur" onmouseover="kabur()" onclick="kabur()">Enggak mau 😜</button>
       </div>
     </div>
 
-    <!-- Halaman 5 (Puncak Lamaran) -->
+    <!-- HALAMAN 5 (FINAL) -->
     <div class="page" id="page5">
-      <div class="emoji-img">🌹💍</div>
-      <h1>Pertanyaan Terakhir...</h1>
-      <p>Will you marry me? Maukah kamu menemani sisa hidupku, ketawa bareng, dan menghadapi dunia bareng aku?</p>
+      <span class="badge">STAGE 5 // THE BIG QUESTION</span>
+      <div class="emoji-img">💍✨</div>
+      <h1>Anita, <span class="highlight-pink">Will You Marry Me?</span></h1>
+      <p>Maukah Anita nemenin perjalanan hidup gue, ketawa bareng hal-hal random, dan tumbuh bareng selamanya?</p>
       <div class="btn-container">
-        <button onclick="selesai()">YES, I DO! 💖✨</button>
+        <button onclick="selesai()">YES, I DO! 💖🔥</button>
       </div>
     </div>
 
   </div>
 
-  <!-- Pop-up Efek Lucu -->
+  <!-- Pop-up Overlay -->
   <div class="overlay" id="overlay">
     <div class="popup">
-      <div style="font-size: 2.5rem; margin-bottom: 10px;" id="popup-emoji">🎉</div>
-      <h3 id="popup-title">Reaksi Sistem:</h3>
+      <div style="font-size: 2.5rem; margin-bottom: 10px;" id="popup-emoji">⚡</div>
+      <h3 id="popup-title">SYSTEM RESPONSE</h3>
       <p id="popup-text">Teks reaksi...</p>
-      <button onclick="closePopup()" id="btn-popup-next">Lanjut ➡️</button>
+      <button onclick="closePopup()" id="btn-popup-next">NEXT ➡️</button>
     </div>
   </div>
+
+  <div class="music-player-hint">🎵 Alex Crichton - Merry Christmas, i miss you</div>
 
   <script>
     let currentPage = 1;
     const music = document.getElementById('bg-music');
     let musicStarted = false;
 
-    // Memutar musik saat klik pertama di halaman
+    // Memutar musik saat klik pertama di mana saja pada layar
     document.body.addEventListener('click', () => {
       if (!musicStarted) {
         music.play().catch(() => {});
@@ -235,11 +308,11 @@
       document.getElementById(`page${currentPage}`).classList.add('active');
     }
 
-    // Tombol "Enggak mau" yang kabur saat didekati kursor
+    // Tombol penolakan yang otomatis kabur jika di-hover atau diklik
     function kabur() {
       const btn = document.getElementById('btn-kabur');
-      const x = Math.random() * (window.innerWidth - btn.offsetWidth - 50);
-      const y = Math.random() * (window.innerHeight - btn.offsetHeight - 50);
+      const x = Math.random() * (window.innerWidth - btn.offsetWidth - 40);
+      const y = Math.random() * (window.innerHeight - btn.offsetHeight - 40);
       
       btn.style.position = 'fixed';
       btn.style.left = `${x}px`;
@@ -247,10 +320,10 @@
     }
 
     function selesai() {
-      document.getElementById('popup-emoji').innerText = '💍🥳🎉';
-      document.getElementById('popup-title').innerText = 'TERIMA KASIH BANYAK! ❤️';
-      document.getElementById('popup-text').innerText = 'Terima kasih sudah mau menerima aku! Aku berjanji akan selalu membuatmu bahagia. Siap-siap kita tentukan tanggal ya! 💖✨';
-      document.getElementById('btn-popup-next').style.display = 'none'; // Sembunyikan tombol lanjut karena sudah halaman terakhir
+      document.getElementById('popup-emoji').innerText = '💍🥳✨';
+      document.getElementById('popup-title').innerText = 'TERIMA KASIH BANYAK ANITA! ❤️';
+      document.getElementById('popup-text').innerText = 'Terima kasih udah mau menerima gue, Anita! Janji bakal selalu bikin hari-hari lu berwarna. Let\'s make memories together! 💖🔥';
+      document.getElementById('btn-popup-next').style.display = 'none'; 
       document.getElementById('overlay').style.display = 'flex';
     }
   </script>
