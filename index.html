@@ -1,164 +1,200 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>For Anita</title>
-<style>
-*{box-sizing:border-box}
-body{
-  margin:0; min-height:100vh; overflow:hidden;
-  font-family:Arial,Helvetica,sans-serif;
-  background:linear-gradient(135deg,#fff8f5,#ffe8ed);
-  color:#29252a;
-}
-.screen{
-  position:absolute; inset:0; display:flex; align-items:center; justify-content:center;
-  padding:24px; opacity:0; pointer-events:none; transform:translateY(18px) scale(.98);
-  transition:.55s ease;
-}
-.screen.active{opacity:1;pointer-events:auto;transform:none}
-.card{
-  width:min(560px,100%); text-align:center; padding:38px 28px;
-  background:rgba(255,255,255,.82); border:1px solid rgba(255,255,255,.9);
-  border-radius:28px; box-shadow:0 20px 60px rgba(100,40,60,.12);
-  backdrop-filter:blur(10px);
-}
-.badge{font-size:12px;letter-spacing:2px;text-transform:uppercase;opacity:.5;margin-bottom:18px}
-h1{font-size:clamp(30px,7vw,54px);margin:0 0 18px;line-height:1.05}
-h2{font-size:clamp(25px,6vw,40px);margin:0 0 18px}
-p{font-size:17px;line-height:1.65;margin:10px 0 24px}
-button{
-  border:0; padding:13px 20px; margin:6px; border-radius:999px;
-  background:#29252a; color:white; font-size:15px; cursor:pointer;
-  transition:.2s; box-shadow:0 7px 18px rgba(0,0,0,.12);
-}
-button:hover{transform:translateY(-2px)}
-button.secondary{background:#fff;color:#29252a;border:1px solid #ddd}
-.answer{min-width:190px}
-.note{font-size:13px;opacity:.55;margin-top:20px}
-.progress{
-  position:fixed;top:18px;left:50%;transform:translateX(-50%);
-  font-size:12px;letter-spacing:2px;opacity:.45;z-index:5
-}
-.music{
-  position:fixed;right:16px;bottom:16px;z-index:10;
-  width:44px;height:44px;padding:0;border-radius:50%;
-  display:none;align-items:center;justify-content:center;
-  font-size:18px;background:rgba(41,37,42,.9)
-}
-.big-heart{font-size:58px;animation:pulse 1.4s infinite}
-@keyframes pulse{50%{transform:scale(1.12)}}
-.hidden{display:none}
-</style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Untuk Anita ❤️</title>
+  <style>
+    /* Reset & Theme Styles */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 99%, #fecfef 100%);
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: #333;
+      padding: 20px;
+    }
+    .card {
+      background: #ffffff;
+      border-radius: 20px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+      width: 100%;
+      max-width: 480px;
+      padding: 30px 25px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .screen {
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      animation: fadeIn 0.6s ease-in-out forwards;
+    }
+    .screen.active {
+      display: flex;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(15px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    h2 {
+      font-size: 1.4rem;
+      margin-bottom: 20px;
+      color: #d63384;
+      line-height: 1.5;
+    }
+    p {
+      font-size: 1rem;
+      line-height: 1.6;
+      color: #495057;
+      margin-bottom: 15px;
+    }
+    .btn-container {
+      display: flex;
+      gap: 12px;
+      margin-top: 20px;
+      width: 100%;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    button, .btn-link {
+      background-color: #ff6b81;
+      color: white;
+      border: none;
+      padding: 12px 24px;
+      font-size: 0.95rem;
+      font-weight: 600;
+      border-radius: 25px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      text-decoration: none;
+      display: inline-block;
+      box-shadow: 0 4px 10px rgba(255, 107, 129, 0.3);
+    }
+    button:hover, .btn-link:hover {
+      background-color: #ff4757;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 14px rgba(255, 107, 129, 0.4);
+    }
+    .btn-secondary {
+      background-color: #f1f2f6;
+      color: #2f3542;
+      box-shadow: none;
+    }
+    .btn-secondary:hover {
+      background-color: #e4e7eb;
+      box-shadow: none;
+    }
+    .btn-wa {
+      background-color: #25d366;
+      box-shadow: 0 4px 10px rgba(37, 211, 102, 0.3);
+    }
+    .btn-wa:hover {
+      background-color: #1ebd56;
+      box-shadow: 0 6px 14px rgba(37, 211, 102, 0.4);
+    }
+    .heart-icon {
+      font-size: 2.5rem;
+      color: #ff4757;
+      margin-bottom: 15px;
+    }
+  </style>
 </head>
 <body>
 
-<audio id="music" loop preload="auto">
-  <source src="Merry Christmas I Miss You.mp3" type="audio/mpeg">
-</audio>
+  <!-- Audio Player -->
+  <audio id="bg-music" loop preload="auto">
+    <source src="Merry Christmas I Miss You.mp3" type="audio/mpeg" />
+    Browser Anda tidak mendukung pemutar audio.
+  </audio>
 
-<div class="progress" id="progress">01 / 05</div>
-<button class="music" id="musicBtn" onclick="toggleMusic()">♫</button>
-
-<section class="screen active" id="s1">
   <div class="card">
-    <div class="badge">DEBIAN WEB TEST</div>
-    <h2>Cg, kar ngetes web Anggo Debian tuutin gen alurne 😭</h2>
-    <p>Coba ikutin dulu. Kalau error, jangan salahkan admin.</p>
-    <button onclick="start()">Mulai →</button>
-    <div class="note">tenang, ini cuma testing... katanya.</div>
+
+    <!-- Layar 1 -->
+    <div class="screen active" id="screen-1">
+      <div class="heart-icon">✉️</div>
+      <h2>Baca ya sampai selesai, Anita.</h2>
+      <div class="btn-container">
+        <button onclick="nextScreen(2)">Nggak</button>
+        <button onclick="nextScreen(2)">Lumayan</button>
+      </div>
+    </div>
+
+    <!-- Layar 2 -->
+    <div class="screen" id="screen-2">
+      <h2>Oh, oke. Aku mau nanya sesuatu.</h2>
+      <p>“Menurut kamu, kalau ada orang yang tiba-tiba ngajak ngobrol setelah lama biasa aja, aneh nggak?”</p>
+      <div class="btn-container">
+        <button onclick="nextScreen(3)">Nggak juga</button>
+        <button onclick="nextScreen(3)">Agak aneh</button>
+      </div>
+    </div>
+
+    <!-- Layar 3 -->
+    <div class="screen" id="screen-3">
+      <p>Ya sebenarnya nggak ada yang aneh sih.</p>
+      <p>Cuma kadang ada orang yang awalnya kita anggap biasa aja, terus karena satu kejadian kecil malah jadi kepikiran.</p>
+      <div class="btn-container">
+        <button onclick="nextScreen(4)">Lanjut</button>
+      </div>
+    </div>
+
+    <!-- Layar 4 -->
+    <div class="screen" id="screen-4">
+      <p>Aku ngalamin itu.</p>
+      <p>Dulu aku pernah suka sama kamu, terus hilang lagi. Beberapa kali begitu.</p>
+      <p>Tapi waktu kamu datang ke rumahku sebelum <strong>ngayah selonding di Pura Ulun Suwi</strong>, entah kenapa perasaan itu muncul lagi.</p>
+      <p>Dan kali ini rasanya lebih serius.</p>
+      <div class="btn-container">
+        <button onclick="nextScreen(5)">Lanjut</button>
+      </div>
+    </div>
+
+    <!-- Layar 5 -->
+    <div class="screen" id="screen-5">
+      <div class="heart-icon">💖</div>
+      <h2>Jadi daripada terus aku pendam, aku mau jujur.</h2>
+      <p><strong>Aku suka sama kamu, Anita.</strong></p>
+      <p>Aku sebenarnya belum punya rencana buat pacaran sekarang. Tapi aku juga nggak bisa terus pura-pura nggak punya perasaan.</p>
+      <p>Kalau kamu berkenan, aku pengin kita coba lebih dekat.</p>
+      <p>Kalau mau jawab, langsung WhatsApp aku. Kalau jawabannya nggak, juga nggak apa-apa. Aku tetap mau kita berteman seperti biasa. Nggak perlu canggung atau menjauh setelah ini.</p>
+      
+      <div class="btn-container" style="margin-top: 25px;">
+        <a href="https://wa.me/6287863114539?text=Hai!%20Aku%20udah%20baca%20pesan%20kamu..." target="_blank" class="btn-link btn-wa">
+          Balas via WhatsApp 💬
+        </a>
+      </div>
+    </div>
+
   </div>
-</section>
 
-<section class="screen" id="s2">
-  <div class="card">
-    <div class="badge">TEST 01</div>
-    <h2>Oke, kita tes dulu.</h2>
-    <p>Kalau sebuah website tiba-tiba ngajak kamu jawab pertanyaan random, kamu bakal...</p>
-    <button class="answer" onclick="reply('Ikutin aja')">Ikutin aja</button>
-    <button class="answer" onclick="reply('Curiga')">Curiga 👀</button>
-    <button class="answer" onclick="reply('Tutup web')">Tutup web</button>
-    <button class="answer" onclick="reply('Kepo')">Kepo dulu</button>
-    <p id="reply" class="note"></p>
-  </div>
-</section>
+  <script>
+    let isMusicPlaying = false;
 
-<section class="screen" id="s3">
-  <div class="card">
-    <div class="badge">TEST 02</div>
-    <h2>Satu pertanyaan lagi.</h2>
-    <p>Kalau ada seseorang yang bikin website khusus buat satu orang, menurut kamu itu...</p>
-    <button class="answer" onclick="go(4)">Niat banget</button>
-    <button class="answer" onclick="go(4)">Agak mencurigakan</button>
-    <button class="answer" onclick="go(4)">Lucu juga</button>
-    <button class="answer" onclick="go(4)">Siapa orangnya? 👀</button>
-  </div>
-</section>
+    function nextScreen(screenNumber) {
+      if (!isMusicPlaying) {
+        const music = document.getElementById('bg-music');
+        music.play().then(() => {
+          isMusicPlaying = true;
+        }).catch(err => console.log("Autoplay terhalang:", err));
+      }
 
-<section class="screen" id="s4">
-  <div class="card">
-    <div class="badge">SYSTEM MESSAGE</div>
-    <h2>Oke, sekarang ketahuan deh.</h2>
-    <p>Sebenarnya dari awal ini bukan tes web. 😭<br><br>
-    Aku cuma butuh alasan supaya kamu mau buka sampai sini.</p>
-    <button onclick="go(5)">Lanjut →</button>
-  </div>
-</section>
+      const screens = document.querySelectorAll('.screen');
+      screens.forEach(screen => screen.classList.remove('active'));
 
-<section class="screen" id="s5">
-  <div class="card">
-    <div class="big-heart">♡</div>
-    <div class="badge">LAST QUESTION</div>
-    <h1>Anita.</h1>
-    <p>
-      Daripada aku muter-muter bikin alasan...<br>
-      sebenarnya aku pengin kenal kamu lebih dekat.
-    </p>
-    <p><b>Mau nggak kasih aku kesempatan buat lebih dekat sama kamu?</b></p>
-    <button onclick="yes()">Mau :)</button>
-    <button class="secondary" onclick="think()">Aku pikir dulu</button>
-    <p id="final" class="note"></p>
-    <div class="note">Merry Christmas, I Miss You</div>
-  </div>
-</section>
-
-<script>
-const screens=[...document.querySelectorAll('.screen')];
-const progress=document.getElementById('progress');
-const music=document.getElementById('music');
-const musicBtn=document.getElementById('musicBtn');
-
-function go(n){
-  screens.forEach((s,i)=>s.classList.toggle('active',i===n-1));
-  progress.textContent=String(n).padStart(2,'0')+' / 05';
-}
-function start(){
-  music.play().catch(()=>{});
-  musicBtn.style.display='flex';
-  go(2);
-}
-function reply(x){
-  const r=document.getElementById('reply');
-  const messages={
-    'Ikutin aja':'Mantap. Tingkat kepo: aman.',
-    'Curiga':'Wajar. Tapi jangan tutup dulu 😭',
-    'Tutup web':'Yah... padahal tinggal sedikit.',
-    'Kepo':'Nah, ini baru orang yang benar.'
-  };
-  r.textContent=messages[x];
-  setTimeout(()=>go(3),900);
-}
-function toggleMusic(){
-  if(music.paused){music.play();musicBtn.textContent='♫'}
-  else{music.pause();musicBtn.textContent='♪'}
-}
-function yes(){
-  document.getElementById('final').textContent='Oke... berarti website ini resmi tidak sia-sia dibuat. ❤️';
-}
-function think(){
-  document.getElementById('final').textContent='Fair enough. Aku tunggu jawabannya. Jangan bikin server-nya timeout ya 😭';
-}
-</script>
+      const targetScreen = document.getElementById('screen-' + screenNumber);
+      if (targetScreen) {
+        targetScreen.classList.add('active');
+      }
+    }
+  </script>
 </body>
 </html>
