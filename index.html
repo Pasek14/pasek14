@@ -82,13 +82,11 @@
       }
     }
 
-    /* Bear Image Animation */
-    .bear-img {
+    /* Bear SVG Container */
+    .bear-container {
       width: 120px;
       height: 120px;
-      object-fit: contain;
       margin-bottom: 15px;
-      filter: drop-shadow(0 8px 12px rgba(0,0,0,0.1));
       animation: floatBear 3s infinite ease-in-out;
     }
 
@@ -215,7 +213,7 @@
 </head>
 <body>
 
-  <!-- Floating Background Elements -->
+  <!-- Background Shapes -->
   <div class="bg-shape shape-1"></div>
   <div class="bg-shape shape-2"></div>
   <div class="bg-shape shape-3"></div>
@@ -223,14 +221,27 @@
   <!-- Audio Player -->
   <audio id="bg-music" loop preload="auto">
     <source src="Merry Christmas I Miss You.mp3" type="audio/mpeg" />
-    Browser Anda tidak mendukung pemutar audio.
   </audio>
 
   <div class="card">
 
     <!-- Layar 1 -->
     <div class="screen active" id="screen-1">
-      <img class="bear-img" src="https://media.tenor.com/gU212Jy34aAAAAAC/bear-cute.gif" alt="Cute Bear" />
+      <div class="bear-container">
+        <svg viewBox="0 0 200 200" width="100%" height="100%">
+          <circle cx="60" cy="50" r="25" fill="#B38B6D" />
+          <circle cx="140" cy="50" r="25" fill="#B38B6D" />
+          <circle cx="60" cy="50" r="14" fill="#FFC0CB" />
+          <circle cx="140" cy="50" r="14" fill="#FFC0CB" />
+          <circle cx="100" cy="110" r="65" fill="#C69C6D" />
+          <ellipse cx="100" cy="125" rx="28" ry="20" fill="#FFF8DC" />
+          <ellipse cx="100" cy="118" rx="10" ry="7" fill="#333" />
+          <circle cx="75" cy="95" r="7" fill="#333" />
+          <circle cx="125" cy="95" r="7" fill="#333" />
+          <circle cx="68" cy="110" r="8" fill="#FFB6C1" opacity="0.6" />
+          <circle cx="132" cy="110" r="8" fill="#FFB6C1" opacity="0.6" />
+        </svg>
+      </div>
       <h2>“Baca ya sampai selesai, Anita ✨”</h2>
       <div class="btn-container">
         <button class="btn-half" onclick="handleLayar1('iya')">Iya</button>
@@ -247,11 +258,26 @@
 
     <!-- Layar 2 -->
     <div class="screen" id="screen-2">
-      <img class="bear-img" id="bear-layar-2" src="https://media.tenor.com/2U54-m_2tL8AAAAi/bear-cute.gif" alt="Cute Bear" />
+      <div class="bear-container">
+        <svg viewBox="0 0 200 200" width="100%" height="100%">
+          <circle cx="60" cy="50" r="25" fill="#B38B6D" />
+          <circle cx="140" cy="50" r="25" fill="#B38B6D" />
+          <circle cx="60" cy="50" r="14" fill="#FFC0CB" />
+          <circle cx="140" cy="50" r="14" fill="#FFC0CB" />
+          <circle cx="100" cy="110" r="65" fill="#C69C6D" />
+          <ellipse cx="100" cy="125" rx="28" ry="20" fill="#FFF8DC" />
+          <ellipse cx="100" cy="118" rx="10" ry="7" fill="#333" />
+          <circle cx="75" cy="95" r="7" fill="#333" />
+          <circle cx="125" cy="95" r="7" fill="#333" />
+          <path d="M 65 85 Q 75 78 85 85" stroke="#333" stroke-width="3" fill="none" />
+          <path d="M 115 85 Q 125 78 135 85" stroke="#333" stroke-width="3" fill="none" />
+          <circle cx="68" cy="110" r="8" fill="#FFB6C1" opacity="0.6" />
+          <circle cx="132" cy="110" r="8" fill="#FFB6C1" opacity="0.6" />
+        </svg>
+      </div>
       
-      <!-- Pesan khusus jika Anita memilih 'Malas' di Layar 1 -->
       <div id="malas-notice" class="notice-text" style="display: none;">
-        Jangan malas-malas ya kamu kan 😁
+        Jangan malas-malas ya Anita 😁
       </div>
 
       <h2>Oh, oke! Aku mau nanya sesuatu...</h2>
@@ -270,7 +296,22 @@
 
     <!-- Layar 3 -->
     <div class="screen" id="screen-3">
-      <img class="bear-img" src="https://media.tenor.com/z10yL-E3nB4AAAAi/cute-bear.gif" alt="Cute Bear" />
+      <div class="bear-container">
+        <svg viewBox="0 0 200 200" width="100%" height="100%">
+          <circle cx="60" cy="50" r="25" fill="#B38B6D" />
+          <circle cx="140" cy="50" r="25" fill="#B38B6D" />
+          <circle cx="60" cy="50" r="14" fill="#FFC0CB" />
+          <circle cx="140" cy="50" r="14" fill="#FFC0CB" />
+          <circle cx="100" cy="110" r="65" fill="#C69C6D" />
+          <ellipse cx="100" cy="125" rx="28" ry="20" fill="#FFF8DC" />
+          <ellipse cx="100" cy="118" rx="10" ry="7" fill="#333" />
+          <circle cx="75" cy="95" r="7" fill="#333" />
+          <circle cx="125" cy="95" r="7" fill="#333" />
+          <path d="M 100 130 Q 100 140 108 135" stroke="#333" stroke-width="3" fill="none" />
+          <circle cx="68" cy="110" r="8" fill="#FFB6C1" opacity="0.6" />
+          <circle cx="132" cy="110" r="8" fill="#FFB6C1" opacity="0.6" />
+        </svg>
+      </div>
       <p>Menurut kamu, kalau ada orang yang tiba-tiba ngajak ngobrol setelah lama biasa aja, aneh nggak?</p>
       <div class="highlight-box">
         <p style="margin:0; color:#2d3436; font-size: 0.95rem;">
@@ -291,7 +332,21 @@
 
     <!-- Layar 4 -->
     <div class="screen" id="screen-4">
-      <img class="bear-img" src="https://media.tenor.com/yU4EaJpW9-QAAAAi/bear-love.gif" alt="Cute Bear" />
+      <div class="bear-container">
+        <svg viewBox="0 0 200 200" width="100%" height="100%">
+          <circle cx="60" cy="50" r="25" fill="#B38B6D" />
+          <circle cx="140" cy="50" r="25" fill="#B38B6D" />
+          <circle cx="60" cy="50" r="14" fill="#FFC0CB" />
+          <circle cx="140" cy="50" r="14" fill="#FFC0CB" />
+          <circle cx="100" cy="110" r="65" fill="#C69C6D" />
+          <ellipse cx="100" cy="125" rx="28" ry="20" fill="#FFF8DC" />
+          <ellipse cx="100" cy="118" rx="10" ry="7" fill="#333" />
+          <ellipse cx="75" cy="95" rx="7" ry="4" fill="#333" />
+          <ellipse cx="125" cy="95" rx="7" ry="4" fill="#333" />
+          <!-- Heart Icon -->
+          <path d="M 100 145 C 90 130, 70 135, 80 150 C 90 160, 100 170, 100 170 C 100 170, 110 160, 120 150 C 130 135, 110 130, 100 145 Z" fill="#ff4757" />
+        </svg>
+      </div>
       <p>Aku ngalamin itu.</p>
       <p>Dulu aku pernah suka sama kamu, terus hilang lagi. Beberapa kali begitu.</p>
       <div class="highlight-box">
@@ -314,7 +369,21 @@
 
     <!-- Layar 5 -->
     <div class="screen" id="screen-5">
-      <img class="bear-img" src="https://media.tenor.com/vH1N9xZ_R_kAAAAi/bear-hug.gif" alt="Cute Bear" />
+      <div class="bear-container">
+        <svg viewBox="0 0 200 200" width="100%" height="100%">
+          <circle cx="60" cy="50" r="25" fill="#B38B6D" />
+          <circle cx="140" cy="50" r="25" fill="#B38B6D" />
+          <circle cx="60" cy="50" r="14" fill="#FFC0CB" />
+          <circle cx="140" cy="50" r="14" fill="#FFC0CB" />
+          <circle cx="100" cy="110" r="65" fill="#C69C6D" />
+          <ellipse cx="100" cy="125" rx="28" ry="20" fill="#FFF8DC" />
+          <ellipse cx="100" cy="118" rx="10" ry="7" fill="#333" />
+          <circle cx="75" cy="95" r="7" fill="#333" />
+          <circle cx="125" cy="95" r="7" fill="#333" />
+          <circle cx="68" cy="110" r="10" fill="#FFB6C1" opacity="0.8" />
+          <circle cx="132" cy="110" r="10" fill="#FFB6C1" opacity="0.8" />
+        </svg>
+      </div>
       <h2>Jadi daripada terus aku pendam, aku mau jujur.</h2>
       <p class="handwritten">Aku suka sama kamu, Anita.</p>
       <p style="margin-top: 10px;">Aku sebenarnya belum punya rencana buat pacaran sekarang. Tapi aku juga nggak bisa terus pura-pura nggak punya perasaan.</p>
