@@ -45,7 +45,7 @@
 
     /* Card Container */
     .card {
-      background: rgba(255, 255, 255, 0.88);
+      background: rgba(255, 255, 255, 0.90);
       backdrop-filter: blur(12px);
       -webkit-backdrop-filter: blur(12px);
       border: 1px solid rgba(255, 255, 255, 0.6);
@@ -53,7 +53,7 @@
       box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
       width: 100%;
       max-width: 450px;
-      padding: 40px 30px;
+      padding: 35px 25px;
       text-align: center;
       position: relative;
       z-index: 2;
@@ -65,7 +65,7 @@
       display: none;
       flex-direction: column;
       align-items: center;
-      animation: slideUpFade 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+      animation: slideUpFade 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
     }
     .screen.active {
       display: flex;
@@ -82,16 +82,19 @@
       }
     }
 
-    /* Decorative Header Badge */
-    .badge-icon {
-      font-size: 3rem;
+    /* Bear Image Animation */
+    .bear-img {
+      width: 120px;
+      height: 120px;
+      object-fit: contain;
       margin-bottom: 15px;
-      display: inline-block;
-      animation: pulse 2s infinite;
+      filter: drop-shadow(0 8px 12px rgba(0,0,0,0.1));
+      animation: floatBear 3s infinite ease-in-out;
     }
-    @keyframes pulse {
-      0%, 100% { transform: scale(1); }
-      50% { transform: scale(1.1); }
+
+    @keyframes floatBear {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-8px); }
     }
 
     /* Typography */
@@ -117,9 +120,15 @@
       font-weight: 400;
     }
 
-    p strong {
-      color: #2d3436;
+    .notice-text {
+      font-size: 0.9rem;
+      color: #ff4757;
       font-weight: 600;
+      margin-bottom: 12px;
+      background: rgba(255, 71, 87, 0.1);
+      padding: 8px 14px;
+      border-radius: 20px;
+      display: inline-block;
     }
 
     .highlight-box {
@@ -136,7 +145,7 @@
     .btn-container {
       display: flex;
       gap: 12px;
-      margin-top: 22px;
+      margin-top: 20px;
       width: 100%;
       justify-content: center;
       flex-wrap: wrap;
@@ -170,10 +179,6 @@
       transform: translateY(-3px);
       box-shadow: 0 12px 25px rgba(255, 117, 140, 0.5);
       background: linear-gradient(135deg, #ff5277 0%, #ff6097 100%);
-    }
-
-    button:active, .btn-link:active {
-      transform: translateY(-1px);
     }
 
     .btn-wa {
@@ -225,12 +230,11 @@
 
     <!-- Layar 1 -->
     <div class="screen active" id="screen-1">
-      <div class="badge-icon">💌</div>
+      <img class="bear-img" src="https://media.tenor.com/gU212Jy34aAAAAAC/bear-cute.gif" alt="Cute Bear" />
       <h2>“Baca ya sampai selesai, Anita ✨”</h2>
-      <p style="color: #718093; font-size: 0.9rem;">Pilih salah satu di bawah ini untuk lanjut:</p>
       <div class="btn-container">
-        <button class="btn-half" onclick="nextScreen(2)">Nggak sibuk</button>
-        <button class="btn-half" onclick="nextScreen(2)">Agak gak sibuk</button>
+        <button class="btn-half" onclick="handleLayar1('iya')">Iya</button>
+        <button class="btn-half" onclick="handleLayar1('malas')">Malas</button>
       </div>
       <div class="progress-bar">
         <div class="dot active"></div>
@@ -243,12 +247,17 @@
 
     <!-- Layar 2 -->
     <div class="screen" id="screen-2">
-      <div class="badge-icon">🤔</div>
+      <img class="bear-img" id="bear-layar-2" src="https://media.tenor.com/2U54-m_2tL8AAAAi/bear-cute.gif" alt="Cute Bear" />
+      
+      <!-- Pesan khusus jika Anita memilih 'Malas' di Layar 1 -->
+      <div id="malas-notice" class="notice-text" style="display: none;">
+        Jangan malas-malas ya kamu kan 😁
+      </div>
+
       <h2>Oh, oke! Aku mau nanya sesuatu...</h2>
-      <p>“Menurut kamu, kalau ada orang yang tiba-tiba ngajak ngobrol setelah lama biasa aja, aneh nggak?”</p>
       <div class="btn-container">
-        <button class="btn-half" onclick="nextScreen(3)">Nggak juga</button>
-        <button class="btn-half" onclick="nextScreen(3)">Agak aneh</button>
+        <button class="btn-half" onclick="nextScreen(3)">Boleh</button>
+        <button class="btn-half" onclick="nextScreen(3)">Nanya apa?</button>
       </div>
       <div class="progress-bar">
         <div class="dot"></div>
@@ -261,11 +270,11 @@
 
     <!-- Layar 3 -->
     <div class="screen" id="screen-3">
-      <div class="badge-icon">💭</div>
-      <p>Ya sebenarnya nggak ada yang aneh sih...</p>
+      <img class="bear-img" src="https://media.tenor.com/z10yL-E3nB4AAAAi/cute-bear.gif" alt="Cute Bear" />
+      <p>Menurut kamu, kalau ada orang yang tiba-tiba ngajak ngobrol setelah lama biasa aja, aneh nggak?</p>
       <div class="highlight-box">
         <p style="margin:0; color:#2d3436; font-size: 0.95rem;">
-          Cuma kadang ada orang yang awalnya kita anggap biasa aja, terus karena satu kejadian kecil malah jadi kepikiran.
+          Ya sebenarnya nggak ada yang aneh sih... Cuma kadang ada orang yang awalnya kita anggap biasa aja, terus karena satu kejadian kecil malah jadi kepikiran.
         </p>
       </div>
       <div class="btn-container">
@@ -282,7 +291,7 @@
 
     <!-- Layar 4 -->
     <div class="screen" id="screen-4">
-      <div class="badge-icon">🌸</div>
+      <img class="bear-img" src="https://media.tenor.com/yU4EaJpW9-QAAAAi/bear-love.gif" alt="Cute Bear" />
       <p>Aku ngalamin itu.</p>
       <p>Dulu aku pernah suka sama kamu, terus hilang lagi. Beberapa kali begitu.</p>
       <div class="highlight-box">
@@ -305,7 +314,7 @@
 
     <!-- Layar 5 -->
     <div class="screen" id="screen-5">
-      <div class="badge-icon">💖</div>
+      <img class="bear-img" src="https://media.tenor.com/vH1N9xZ_R_kAAAAi/bear-hug.gif" alt="Cute Bear" />
       <h2>Jadi daripada terus aku pendam, aku mau jujur.</h2>
       <p class="handwritten">Aku suka sama kamu, Anita.</p>
       <p style="margin-top: 10px;">Aku sebenarnya belum punya rencana buat pacaran sekarang. Tapi aku juga nggak bisa terus pura-pura nggak punya perasaan.</p>
@@ -333,14 +342,28 @@
   <script>
     let isMusicPlaying = false;
 
-    function nextScreen(screenNumber) {
+    function startMusic() {
       if (!isMusicPlaying) {
         const music = document.getElementById('bg-music');
         music.play().then(() => {
           isMusicPlaying = true;
         }).catch(err => console.log("Autoplay terhalang:", err));
       }
+    }
 
+    function handleLayar1(choice) {
+      startMusic();
+      const notice = document.getElementById('malas-notice');
+      if (choice === 'malas') {
+        notice.style.display = 'inline-block';
+      } else {
+        notice.style.display = 'none';
+      }
+      nextScreen(2);
+    }
+
+    function nextScreen(screenNumber) {
+      startMusic();
       const screens = document.querySelectorAll('.screen');
       screens.forEach(screen => screen.classList.remove('active'));
 
