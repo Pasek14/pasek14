@@ -3,10 +3,10 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Pesan untuk Anita</title>
-  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <title>Kuis Singkat</title>
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <style>
-    /* Global Styles & Transition */
+    /* Reset & Base Styles */
     * {
       box-sizing: border-box;
       margin: 0;
@@ -15,149 +15,152 @@
     
     body {
       font-family: 'Poppins', sans-serif;
-      background: #f4f6f9; /* Netral di awal */
+      background: #f0f4f8;
       min-height: 100vh;
       display: flex;
       justify-content: center;
       align-items: center;
-      color: #333;
+      color: #2d3748;
       padding: 20px;
       overflow-x: hidden;
       position: relative;
-      transition: background 1s ease;
+      transition: background 1.2s cubic-bezier(0.4, 0, 0.2, 1);
     }
 
-    /* Transition ke Tampilan Romantis (Dipicu saat Masuk Halaman 4) */
+    /* Transition ke Tema Romantis saat Masuk Halaman 4 */
     body.romantic-mode {
-      background: linear-gradient(135deg, #fbc2eb 0%, #a6c1ee 100%);
+      background: linear-gradient(135deg, #ffdde1 0%, #ee9ca7 50%, #a1c4fd 100%);
     }
 
-    /* Floating Background Elements (Sembunyi di awal, muncul di Halaman 4) */
+    /* Floating Background Particles (Sembunyi di awal) */
     .bg-shape {
       position: absolute;
       border-radius: 50%;
-      background: rgba(255, 255, 255, 0.3);
-      backdrop-filter: blur(5px);
+      background: rgba(255, 255, 255, 0.35);
+      backdrop-filter: blur(8px);
       animation: float 8s infinite ease-in-out;
       z-index: 1;
       opacity: 0;
-      transition: opacity 1s ease;
+      transition: opacity 1.5s ease;
     }
     body.romantic-mode .bg-shape {
       opacity: 1;
     }
-    .shape-1 { width: 120px; height: 120px; top: 10%; left: 8%; animation-delay: 0s; }
-    .shape-2 { width: 180px; height: 180px; bottom: 12%; right: 5%; animation-delay: 2s; }
-    .shape-3 { width: 80px; height: 80px; bottom: 20%; left: 15%; animation-delay: 4s; }
+    .shape-1 { width: 140px; height: 140px; top: 8%; left: 6%; animation-delay: 0s; }
+    .shape-2 { width: 190px; height: 190px; bottom: 10%; right: 5%; animation-delay: 2.5s; }
+    .shape-3 { width: 90px; height: 90px; bottom: 22%; left: 12%; animation-delay: 4.5s; }
 
     @keyframes float {
       0%, 100% { transform: translateY(0) rotate(0deg); }
-      50% { transform: translateY(-20px) rotate(10deg); }
+      50% { transform: translateY(-22px) rotate(12deg); }
     }
 
-    /* Card Container */
+    /* Main Card Container */
     .card {
       background: #ffffff;
-      border: 1px solid #e1e8ed;
+      border: 1px solid #e2e8f0;
       border-radius: 16px;
-      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
       width: 100%;
-      max-width: 450px;
+      max-width: 440px;
       padding: 35px 25px;
       text-align: center;
       position: relative;
       z-index: 2;
-      transition: all 0.8s ease;
+      transition: all 1s cubic-bezier(0.4, 0, 0.2, 1);
     }
 
-    /* Card Style saat Romantis */
+    /* Style Card saat Romantis (Halaman 4 & 5) */
     body.romantic-mode .card {
-      background: rgba(255, 255, 255, 0.90);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
-      border: 1px solid rgba(255, 255, 255, 0.6);
+      background: rgba(255, 255, 255, 0.92);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(255, 255, 255, 0.8);
       border-radius: 28px;
-      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
+      box-shadow: 0 20px 45px rgba(238, 156, 167, 0.3);
     }
 
-    /* Screens Animation */
+    /* Screens Switching */
     .screen {
       display: none;
       flex-direction: column;
       align-items: center;
-      animation: slideUpFade 0.5s ease forwards;
+      animation: fadeIn 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
     }
     .screen.active {
       display: flex;
     }
 
-    @keyframes slideUpFade {
+    @keyframes fadeIn {
       from {
         opacity: 0;
-        transform: translateY(15px);
+        transform: translateY(15px) scale(0.98);
       }
       to {
         opacity: 1;
-        transform: translateY(0);
+        transform: translateY(0) scale(1);
       }
     }
 
-    /* Typography Netral (Halaman 1-3) */
+    /* Typography */
     h2.neutral-title {
       font-size: 1.25rem;
       font-weight: 600;
-      color: #2c3e50;
+      color: #1a202c;
       margin-bottom: 20px;
       line-height: 1.5;
     }
 
-    /* Typography Romantis (Halaman 4-5) */
     h2.romantic-title {
-      font-size: 1.45rem;
-      font-weight: 600;
-      color: #ff4757;
-      margin-bottom: 18px;
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: #e53e3e;
+      margin-bottom: 16px;
       line-height: 1.4;
     }
 
     .handwritten {
       font-family: 'Caveat', cursive;
-      font-size: 2.2rem;
+      font-size: 2.3rem;
       color: #d63031;
+      font-weight: 700;
+      margin: 10px 0;
+      text-shadow: 1px 1px 2px rgba(0,0,0,0.05);
     }
 
     p {
-      font-size: 0.95rem;
-      line-height: 1.7;
+      font-size: 0.96rem;
+      line-height: 1.75;
       color: #4a5568;
-      margin-bottom: 16px;
+      margin-bottom: 14px;
     }
 
     .notice-text {
       font-size: 0.88rem;
-      color: #4a5568;
-      background: #edf2f7;
-      padding: 8px 14px;
-      border-radius: 8px;
-      margin-bottom: 15px;
+      color: #2b6cb0;
+      background: #ebf8ff;
+      padding: 8px 16px;
+      border-radius: 20px;
+      margin-bottom: 16px;
       display: inline-block;
+      font-weight: 500;
     }
 
     .highlight-box {
-      background: rgba(255, 107, 129, 0.08);
+      background: rgba(255, 182, 193, 0.25);
       border-left: 4px solid #ff4757;
-      padding: 14px 16px;
-      border-radius: 8px;
+      padding: 15px 18px;
+      border-radius: 12px;
       text-align: left;
-      margin: 10px 0 20px 0;
+      margin: 12px 0 20px 0;
       width: 100%;
     }
 
-    /* Bear Animation (Halaman 4-5) */
+    /* Bear SVG Container */
     .bear-container {
-      width: 110px;
-      height: 110px;
-      margin-bottom: 15px;
+      width: 120px;
+      height: 120px;
+      margin-bottom: 18px;
       animation: floatBear 3s infinite ease-in-out;
     }
 
@@ -166,11 +169,11 @@
       50% { transform: translateY(-8px); }
     }
 
-    /* Buttons Netral (Halaman 1-3) */
+    /* Buttons Style (Initial / Netral) */
     .btn-container {
       display: flex;
       gap: 12px;
-      margin-top: 15px;
+      margin-top: 18px;
       width: 100%;
       justify-content: center;
       flex-wrap: wrap;
@@ -180,11 +183,11 @@
       background: #3182ce;
       color: #ffffff;
       border: none;
-      padding: 12px 24px;
+      padding: 13px 24px;
       font-size: 0.95rem;
       font-weight: 500;
       font-family: 'Poppins', sans-serif;
-      border-radius: 8px;
+      border-radius: 10px;
       cursor: pointer;
       transition: all 0.3s ease;
       text-decoration: none;
@@ -202,7 +205,7 @@
       background: #2b6cb0;
     }
 
-    /* Buttons Romantis (Halaman 4-5) */
+    /* Buttons Style (Romantis Halaman 4 & 5) */
     body.romantic-mode button, body.romantic-mode .btn-link {
       background: linear-gradient(135deg, #ff758c 0%, #ff7eb3 100%);
       border-radius: 50px;
@@ -213,15 +216,21 @@
     body.romantic-mode button:hover, body.romantic-mode .btn-link:hover {
       background: linear-gradient(135deg, #ff5277 0%, #ff6097 100%);
       transform: translateY(-2px);
-      box-shadow: 0 12px 25px rgba(255, 117, 140, 0.5);
+      box-shadow: 0 12px 25px rgba(255, 117, 140, 0.45);
     }
 
     .btn-wa {
       background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%) !important;
       box-shadow: 0 8px 20px rgba(56, 239, 125, 0.35) !important;
+      font-size: 1.02rem;
+      padding: 15px 28px;
     }
 
-    /* Progress Dot Indicator */
+    .btn-wa:hover {
+      background: linear-gradient(135deg, #0e8379 0%, #2ed86f 100%) !important;
+    }
+
+    /* Progress Indicators */
     .progress-bar {
       display: flex;
       gap: 6px;
@@ -247,24 +256,24 @@
 </head>
 <body>
 
-  <!-- Elements Background -->
+  <!-- Floating Background Elements -->
   <div class="bg-shape shape-1"></div>
   <div class="bg-shape shape-2"></div>
   <div class="bg-shape shape-3"></div>
 
-  <!-- Pemutar Musik (Mulai di Halaman 4) -->
+  <!-- Audio Player (Mulai berputar dari Halaman 4) -->
   <audio id="bg-music" loop preload="auto">
     <source src="Merry Christmas I Miss You.mp3" type="audio/mpeg" />
   </audio>
 
   <div class="card">
 
-    <!-- Layar 1 (Biasa / Netral) -->
+    <!-- Layar 1 (Kuis Netral) -->
     <div class="screen active" id="screen-1">
-      <h2 class="neutral-title">Baca ya sampai selesai, Anita</h2>
+      <h2 class="neutral-title">Tes Singkat: Seberapa Peka Intuisimu?</h2>
       <div class="btn-container">
-        <button class="btn-half" onclick="handleLayar1('iya')">Iya</button>
-        <button class="btn-half" onclick="handleLayar1('malas')">Malas</button>
+        <button class="btn-half" onclick="handleLayar1('mulai')">Mulai Kuis</button>
+        <button class="btn-half" onclick="handleLayar1('malas')">Malas Ah</button>
       </div>
       <div class="progress-bar">
         <div class="dot active"></div>
@@ -275,15 +284,15 @@
       </div>
     </div>
 
-    <!-- Layar 2 (Biasa / Netral) -->
+    <!-- Layar 2 (Pertanyaan 1 Netral) -->
     <div class="screen" id="screen-2">
       <div id="malas-notice" class="notice-text" style="display: none;">
-        Jangan malas-malas ya Anita 😁
+        Bentar doang kok, cuma 3 pertanyaan 😁
       </div>
-      <h2 class="neutral-title">Oh, oke. Aku mau nanya sesuatu...</h2>
+      <h2 class="neutral-title">Pertanyaan 1: Kalau ada momen sederhana yang tiba-tiba teringat terus tanpa alasan, menurutmu itu kenapa?</h2>
       <div class="btn-container">
-        <button class="btn-half" onclick="nextScreen(3)">Boleh</button>
-        <button class="btn-half" onclick="nextScreen(3)">Nanya apa?</button>
+        <button class="btn-half" onclick="nextScreen(3)">Kebetulan Aja</button>
+        <button class="btn-half" onclick="nextScreen(3)">Ada Artinya</button>
       </div>
       <div class="progress-bar">
         <div class="dot"></div>
@@ -294,16 +303,12 @@
       </div>
     </div>
 
-    <!-- Layar 3 (Biasa / Netral) -->
+    <!-- Layar 3 (Pertanyaan 2 Netral / Jembatan) -->
     <div class="screen" id="screen-3">
-      <p style="text-align: left; color: #2d3748; font-weight: 500;">
-        Menurut kamu, kalau ada orang yang tiba-tiba ngajak ngobrol setelah sekian lama biasa aja, aneh nggak?
-      </p>
-      <p style="text-align: left; font-size: 0.9rem; color: #718096; margin-top: 8px;">
-        Sebenarnya nggak ada yang aneh sih... Cuma kadang ada situasi di mana yang awalnya dianggap biasa aja, karena satu momen kecil malah jadi kepikiran.
-      </p>
+      <h2 class="neutral-title">Pertanyaan 2: Kamu tipe orang yang peka gak kalau ada seseorang yang diam-diam merhatiin kamu?</h2>
       <div class="btn-container">
-        <button onclick="goToRomanticScreen()">Lanjut ➔</button>
+        <button class="btn-half" onclick="goToRomanticScreen()">Peka Dong</button>
+        <button class="btn-half" onclick="goToRomanticScreen()">Gak Sadar Sama Sekali</button>
       </div>
       <div class="progress-bar">
         <div class="dot"></div>
@@ -314,7 +319,7 @@
       </div>
     </div>
 
-    <!-- Layar 4 (Tampilan Berubah Romantis + Musik Menyala) -->
+    <!-- Layar 4 (Berubah Romantis + Musik Menyala) -->
     <div class="screen" id="screen-4">
       <div class="bear-container">
         <svg viewBox="0 0 200 200" width="100%" height="100%">
@@ -330,14 +335,13 @@
           <path d="M 100 145 C 90 130, 70 135, 80 150 C 90 160, 100 170, 100 170 C 100 170, 110 160, 120 150 C 130 135, 110 130, 100 145 Z" fill="#ff4757" />
         </svg>
       </div>
-      <p>Aku ngalamin itu.</p>
-      <p>Dulu aku pernah suka sama kamu, terus hilang lagi. Beberapa kali begitu.</p>
+      <p style="font-size: 1.05rem; font-weight: 500; color: #2d3748;">Sebenarnya ini bukan kuis...</p>
+      <p>Aku cuma bingung gimana cara mulainya. Ingat gak waktu kamu datang ke rumahku sebelum kamu ngayah selonding di Pura Ulun Suwi waktu itu?</p>
       <div class="highlight-box">
-        <p style="margin:0; color:#d63031;">
-          Tapi waktu kamu datang ke rumahku sebelum <strong>ngayah selonding di Pura Ulun Suwi</strong>, entah kenapa perasaan itu muncul lagi.
+        <p style="margin:0; color:#d63031; font-weight: 500;">
+          Momen sederhana itu ternyata bikin perasaan yang dulu sempat ada muncul lagi. Dan kali ini rasanya makin jelas...
         </p>
       </div>
-      <p>Dan kali ini rasanya lebih serius...</p>
       <div class="btn-container">
         <button onclick="nextScreen(5)">Lanjut ➔</button>
       </div>
@@ -350,7 +354,7 @@
       </div>
     </div>
 
-    <!-- Layar 5 (Romantis + Ungkapan Perasaan) -->
+    <!-- Layar 5 (Puncak Romantis + Menyebut Nama Anita) -->
     <div class="screen" id="screen-5">
       <div class="bear-container">
         <svg viewBox="0 0 200 200" width="100%" height="100%">
@@ -363,16 +367,15 @@
           <ellipse cx="100" cy="118" rx="10" ry="7" fill="#333" />
           <circle cx="75" cy="95" r="7" fill="#333" />
           <circle cx="125" cy="95" r="7" fill="#333" />
-          <circle cx="68" cy="110" r="10" fill="#FFB6C1" opacity="0.8" />
-          <circle cx="132" cy="110" r="10" fill="#FFB6C1" opacity="0.8" />
+          <circle cx="68" cy="110" r="10" fill="#FFB6C1" opacity="0.85" />
+          <circle cx="132" cy="110" r="10" fill="#FFB6C1" opacity="0.85" />
         </svg>
       </div>
-      <h2 class="romantic-title">Jadi daripada terus aku pendam, aku mau jujur.</h2>
-      <p class="handwritten">Aku suka sama kamu, Anita. ✨</p>
-      <p style="margin-top: 10px;">Aku sebenarnya belum punya rencana buat pacaran sekarang. Tapi aku juga nggak bisa terus pura-pura nggak punya perasaan.</p>
-      <p><strong>Kalau kamu berkenan, aku pengin kita coba lebih dekat.</strong></p>
-      <p style="font-size: 0.88rem; color: #636e72;">
-        Kalau mau jawab, langsung WhatsApp aku ya. Kalau jawabannya nggak, juga nggak apa-apa. Aku tetap mau kita berteman seperti biasa. Nggak perlu canggung atau menjauh setelah ini. 😊
+      <h2 class="romantic-title">Jadi daripada terus aku simpan sendiri, aku mau jujur.</h2>
+      <p class="handwritten">Aku suka sama kamu, Anita ✨</p>
+      <p style="margin-top: 8px;">Aku belum ada rencana buat berpacaran sekarang, tapi kalau kamu berkenan, aku pengin kita bisa coba kenal lebih dekat lagi.</p>
+      <p style="font-size: 0.88rem; color: #718096; margin-top: 10px;">
+        Kalau mau jawab, langsung WhatsApp aku ya. Kalau jawabannya nggak, juga gak masalah sama sekali kok. Kita tetap berteman biasa dan gak perlu canggung ya. 😊
       </p>
       
       <div class="btn-container" style="margin-top: 20px;">
@@ -403,14 +406,14 @@
     }
 
     function goToRomanticScreen() {
-      // Mengubah tema tampilan menjadi romantis
+      // Mengaktifkan mode romantis pada background dan kartu
       document.body.classList.add('romantic-mode');
       
-      // Memulai pemutaran musik
+      // Memutar musik saat masuk ke Halaman 4
       const music = document.getElementById('bg-music');
       music.play().catch(err => console.log("Autoplay terhalang:", err));
 
-      // Lanjut ke Layar 4
+      // Pindah ke Layar 4
       nextScreen(4);
     }
 
