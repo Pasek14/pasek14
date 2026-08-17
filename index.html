@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Kuis Singkat</title>
-  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <title>Simulasi Latihan Soal UKK TKJ</title>
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <style>
     /* Reset & Base Styles */
     * {
@@ -15,69 +15,88 @@
     
     body {
       font-family: 'Poppins', sans-serif;
-      background: #f0f4f8;
+      background: #1e293b; /* Tema IT / Sistem Akademik di awal */
       min-height: 100vh;
       display: flex;
       justify-content: center;
       align-items: center;
-      color: #2d3748;
+      color: #f8fafc;
       padding: 20px;
       overflow-x: hidden;
       position: relative;
-      transition: background 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+      transition: background 1.5s cubic-bezier(0.4, 0, 0.2, 1);
     }
 
-    /* Transition ke Tema Romantis saat Masuk Halaman 4 */
+    /* Background Gradasi Romantis & Meriah saat Masuk Halaman 4 & 5 */
     body.romantic-mode {
-      background: linear-gradient(135deg, #ffdde1 0%, #ee9ca7 50%, #a1c4fd 100%);
+      background: linear-gradient(-45deg, #ff9a9e, #fecfef, #a1c4fd, #c2e9fb);
+      background-size: 400% 400%;
+      animation: gradientBG 10s ease infinite;
+      color: #2d3748;
     }
 
-    /* Floating Background Particles (Sembunyi di awal) */
-    .bg-shape {
+    @keyframes gradientBG {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    /* Partikel Hati & Bintang Melayang di Background (Halaman 4-5) */
+    .particle {
       position: absolute;
-      border-radius: 50%;
-      background: rgba(255, 255, 255, 0.35);
-      backdrop-filter: blur(8px);
-      animation: float 8s infinite ease-in-out;
-      z-index: 1;
+      pointer-events: none;
       opacity: 0;
-      transition: opacity 1.5s ease;
+      z-index: 1;
+      animation: floatUp 6s linear infinite;
     }
-    body.romantic-mode .bg-shape {
-      opacity: 1;
-    }
-    .shape-1 { width: 140px; height: 140px; top: 8%; left: 6%; animation-delay: 0s; }
-    .shape-2 { width: 190px; height: 190px; bottom: 10%; right: 5%; animation-delay: 2.5s; }
-    .shape-3 { width: 90px; height: 90px; bottom: 22%; left: 12%; animation-delay: 4.5s; }
 
-    @keyframes float {
-      0%, 100% { transform: translateY(0) rotate(0deg); }
-      50% { transform: translateY(-22px) rotate(12deg); }
+    body.romantic-mode .particle {
+      opacity: 0.8;
+    }
+
+    @keyframes floatUp {
+      0% {
+        transform: translateY(100vh) scale(0.5) rotate(0deg);
+        opacity: 0;
+      }
+      20% { opacity: 0.9; }
+      80% { opacity: 0.9; }
+      100% {
+        transform: translateY(-10vh) scale(1.2) rotate(360deg);
+        opacity: 0;
+      }
     }
 
     /* Main Card Container */
     .card {
-      background: #ffffff;
-      border: 1px solid #e2e8f0;
+      background: #0f172a;
+      border: 1px solid #334155;
       border-radius: 16px;
-      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
       width: 100%;
-      max-width: 440px;
+      max-width: 450px;
       padding: 35px 25px;
       text-align: center;
       position: relative;
-      z-index: 2;
+      z-index: 10;
       transition: all 1s cubic-bezier(0.4, 0, 0.2, 1);
     }
 
-    /* Style Card saat Romantis (Halaman 4 & 5) */
+    /* Glassmorphism Berkilau Meriah (Halaman 4 & 5) */
     body.romantic-mode .card {
-      background: rgba(255, 255, 255, 0.92);
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
-      border: 1px solid rgba(255, 255, 255, 0.8);
-      border-radius: 28px;
-      box-shadow: 0 20px 45px rgba(238, 156, 167, 0.3);
+      background: rgba(255, 255, 255, 0.88);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 2px solid rgba(255, 255, 255, 0.9);
+      border-radius: 32px;
+      box-shadow: 0 20px 50px rgba(255, 105, 180, 0.35), 
+                  0 0 25px rgba(255, 182, 193, 0.5) inset;
+      animation: pulseGlow 3s infinite alternate;
+    }
+
+    @keyframes pulseGlow {
+      0% { box-shadow: 0 20px 50px rgba(255, 105, 180, 0.35), 0 0 20px rgba(255, 255, 255, 0.6) inset; }
+      100% { box-shadow: 0 25px 60px rgba(255, 105, 180, 0.55), 0 0 30px rgba(255, 182, 193, 0.8) inset; }
     }
 
     /* Screens Switching */
@@ -94,7 +113,7 @@
     @keyframes fadeIn {
       from {
         opacity: 0;
-        transform: translateY(15px) scale(0.98);
+        transform: translateY(20px) scale(0.95);
       }
       to {
         opacity: 1;
@@ -102,74 +121,96 @@
       }
     }
 
-    /* Typography */
-    h2.neutral-title {
-      font-size: 1.25rem;
+    /* Typography Netral (1-3) */
+    .badge {
+      background: #3b82f6;
+      color: #fff;
+      font-size: 0.75rem;
+      padding: 4px 12px;
+      border-radius: 20px;
       font-weight: 600;
-      color: #1a202c;
+      margin-bottom: 12px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    h2.neutral-title {
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: #f1f5f9;
       margin-bottom: 20px;
       line-height: 1.5;
     }
 
+    /* Typography Romantis (4-5) */
     h2.romantic-title {
-      font-size: 1.4rem;
+      font-size: 1.45rem;
       font-weight: 700;
-      color: #e53e3e;
-      margin-bottom: 16px;
+      color: #ff3366;
+      margin-bottom: 14px;
       line-height: 1.4;
+      text-shadow: 0 2px 4px rgba(255, 51, 102, 0.15);
     }
 
     .handwritten {
       font-family: 'Caveat', cursive;
-      font-size: 2.3rem;
-      color: #d63031;
+      font-size: 2.6rem;
+      color: #e11d48;
       font-weight: 700;
-      margin: 10px 0;
-      text-shadow: 1px 1px 2px rgba(0,0,0,0.05);
+      margin: 12px 0;
+      text-shadow: 2px 2px 8px rgba(225, 29, 72, 0.2);
+      animation: heartbeat 1.5s infinite ease-in-out;
+    }
+
+    @keyframes heartbeat {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.05); }
     }
 
     p {
-      font-size: 0.96rem;
-      line-height: 1.75;
-      color: #4a5568;
+      font-size: 0.95rem;
+      line-height: 1.7;
+      color: #475569;
       margin-bottom: 14px;
     }
 
     .notice-text {
       font-size: 0.88rem;
-      color: #2b6cb0;
-      background: #ebf8ff;
+      color: #38bdf8;
+      background: rgba(56, 189, 248, 0.1);
+      border: 1px solid rgba(56, 189, 248, 0.3);
       padding: 8px 16px;
       border-radius: 20px;
       margin-bottom: 16px;
       display: inline-block;
-      font-weight: 500;
     }
 
     .highlight-box {
-      background: rgba(255, 182, 193, 0.25);
+      background: linear-gradient(135deg, rgba(255, 182, 193, 0.4), rgba(255, 192, 203, 0.2));
       border-left: 4px solid #ff4757;
-      padding: 15px 18px;
-      border-radius: 12px;
+      padding: 16px;
+      border-radius: 14px;
       text-align: left;
       margin: 12px 0 20px 0;
       width: 100%;
+      box-shadow: 0 4px 15px rgba(255, 71, 87, 0.1);
     }
 
-    /* Bear SVG Container */
+    /* Bear SVG Animasi Meriah */
     .bear-container {
-      width: 120px;
-      height: 120px;
-      margin-bottom: 18px;
+      width: 130px;
+      height: 130px;
+      margin-bottom: 15px;
+      position: relative;
       animation: floatBear 3s infinite ease-in-out;
     }
 
     @keyframes floatBear {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-8px); }
+      0%, 100% { transform: translateY(0) rotate(0deg); }
+      50% { transform: translateY(-10px) rotate(3deg); }
     }
 
-    /* Buttons Style (Initial / Netral) */
+    /* Buttons Style Netral */
     .btn-container {
       display: flex;
       gap: 12px;
@@ -180,11 +221,11 @@
     }
 
     button, .btn-link {
-      background: #3182ce;
+      background: #2563eb;
       color: #ffffff;
       border: none;
-      padding: 13px 24px;
-      font-size: 0.95rem;
+      padding: 13px 20px;
+      font-size: 0.92rem;
       font-weight: 500;
       font-family: 'Poppins', sans-serif;
       border-radius: 10px;
@@ -197,37 +238,48 @@
       width: 100%;
     }
 
+    .btn-code {
+      font-family: monospace;
+      font-size: 0.85rem;
+      background: #1e293b;
+      border: 1px solid #475569;
+    }
+
+    .btn-code:hover {
+      background: #334155;
+    }
+
     .btn-half {
       width: calc(50% - 6px);
     }
 
-    button:hover {
-      background: #2b6cb0;
-    }
-
-    /* Buttons Style (Romantis Halaman 4 & 5) */
+    /* Buttons Style Meriah (Halaman 4 & 5) */
     body.romantic-mode button, body.romantic-mode .btn-link {
+      background: linear-gradient(135deg, #ff4e50 0%, #f9d423 100%);
       background: linear-gradient(135deg, #ff758c 0%, #ff7eb3 100%);
       border-radius: 50px;
       font-weight: 600;
-      box-shadow: 0 8px 20px rgba(255, 117, 140, 0.35);
+      font-size: 1rem;
+      box-shadow: 0 10px 25px rgba(255, 117, 140, 0.4);
     }
 
     body.romantic-mode button:hover, body.romantic-mode .btn-link:hover {
-      background: linear-gradient(135deg, #ff5277 0%, #ff6097 100%);
-      transform: translateY(-2px);
-      box-shadow: 0 12px 25px rgba(255, 117, 140, 0.45);
+      transform: translateY(-3px) scale(1.02);
+      box-shadow: 0 15px 30px rgba(255, 117, 140, 0.6);
     }
 
     .btn-wa {
       background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%) !important;
-      box-shadow: 0 8px 20px rgba(56, 239, 125, 0.35) !important;
-      font-size: 1.02rem;
-      padding: 15px 28px;
+      box-shadow: 0 10px 25px rgba(56, 239, 125, 0.4) !important;
+      font-size: 1.05rem !important;
+      padding: 16px 30px !important;
+      animation: pulseWA 2s infinite;
     }
 
-    .btn-wa:hover {
-      background: linear-gradient(135deg, #0e8379 0%, #2ed86f 100%) !important;
+    @keyframes pulseWA {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.03); }
+      100% { transform: scale(1); }
     }
 
     /* Progress Indicators */
@@ -241,13 +293,16 @@
       width: 8px;
       height: 8px;
       border-radius: 50%;
-      background-color: #cbd5e0;
+      background-color: #475569;
       transition: all 0.3s ease;
     }
     .dot.active {
-      width: 20px;
+      width: 22px;
       border-radius: 10px;
-      background-color: #3182ce;
+      background-color: #3b82f6;
+    }
+    body.romantic-mode .dot {
+      background-color: #cbd5e1;
     }
     body.romantic-mode .dot.active {
       background-color: #ff4757;
@@ -256,10 +311,8 @@
 </head>
 <body>
 
-  <!-- Floating Background Elements -->
-  <div class="bg-shape shape-1"></div>
-  <div class="bg-shape shape-2"></div>
-  <div class="bg-shape shape-3"></div>
+  <!-- Element Partikel Melayang untuk Kesan Meriah -->
+  <div id="particles-container"></div>
 
   <!-- Audio Player (Mulai berputar dari Halaman 4) -->
   <audio id="bg-music" loop preload="auto">
@@ -268,12 +321,13 @@
 
   <div class="card">
 
-    <!-- Layar 1 (Kuis Netral) -->
+    <!-- Layar 1 (Portal Netral UKK) -->
     <div class="screen active" id="screen-1">
-      <h2 class="neutral-title">Tes Singkat: Seberapa Peka Intuisimu?</h2>
+      <span class="badge">UKK TKJ 2026</span>
+      <h2 class="neutral-title">Simulasi Latihan Soal UKK TKJ — Paket Server Debian & Networking</h2>
       <div class="btn-container">
-        <button class="btn-half" onclick="handleLayar1('mulai')">Mulai Kuis</button>
-        <button class="btn-half" onclick="handleLayar1('malas')">Malas Ah</button>
+        <button class="btn-half" onclick="handleLayar1('mulai')">Mulai Kerjakan</button>
+        <button class="btn-half" style="background:#475569;" onclick="handleLayar1('malas')">Nanti Dulu</button>
       </div>
       <div class="progress-bar">
         <div class="dot active"></div>
@@ -284,15 +338,16 @@
       </div>
     </div>
 
-    <!-- Layar 2 (Pertanyaan 1 Netral) -->
+    <!-- Layar 2 (Soal 1: Perintah Instalasi) -->
     <div class="screen" id="screen-2">
       <div id="malas-notice" class="notice-text" style="display: none;">
-        Bentar doang kok, cuma 3 pertanyaan 😁
+        Kerjakan 2 soal dulu sebelum lanjut 😁
       </div>
-      <h2 class="neutral-title">Pertanyaan 1: Kalau ada momen sederhana yang tiba-tiba teringat terus tanpa alasan, menurutmu itu kenapa?</h2>
+      <span class="badge">Soal 1 / 2</span>
+      <h2 class="neutral-title">Perintah CLI Debian Linux yang benar untuk melakukan instalasi paket BIND9 (DNS) dan Apache2 (Web Server) adalah...</h2>
       <div class="btn-container">
-        <button class="btn-half" onclick="nextScreen(3)">Kebetulan Aja</button>
-        <button class="btn-half" onclick="nextScreen(3)">Ada Artinya</button>
+        <button class="btn-code" onclick="nextScreen(3)">sudo apt install bind9 apache2 -y</button>
+        <button class="btn-code" onclick="nextScreen(3)">apt-get config bind9 apache2</button>
       </div>
       <div class="progress-bar">
         <div class="dot"></div>
@@ -303,12 +358,13 @@
       </div>
     </div>
 
-    <!-- Layar 3 (Pertanyaan 2 Netral / Jembatan) -->
+    <!-- Layar 3 (Soal 2: Perintah Masuk Konfigurasi) -->
     <div class="screen" id="screen-3">
-      <h2 class="neutral-title">Pertanyaan 2: Kamu tipe orang yang peka gak kalau ada seseorang yang diam-diam merhatiin kamu?</h2>
+      <span class="badge">Soal 2 / 2</span>
+      <h2 class="neutral-title">Perintah text editor yang tepat untuk masuk dan mengedit file konfigurasi default zone domain BIND9 pada Debian adalah...</h2>
       <div class="btn-container">
-        <button class="btn-half" onclick="goToRomanticScreen()">Peka Dong</button>
-        <button class="btn-half" onclick="goToRomanticScreen()">Gak Sadar Sama Sekali</button>
+        <button class="btn-code" onclick="goToRomanticScreen()">nano /etc/bind/named.conf.default-zones</button>
+        <button class="btn-code" onclick="goToRomanticScreen()">cd /etc/bind/config</button>
       </div>
       <div class="progress-bar">
         <div class="dot"></div>
@@ -319,7 +375,7 @@
       </div>
     </div>
 
-    <!-- Layar 4 (Berubah Romantis + Musik Menyala) -->
+    <!-- Layar 4 (Kejutan Meriah + Efek Romantis + Musik) -->
     <div class="screen" id="screen-4">
       <div class="bear-container">
         <svg viewBox="0 0 200 200" width="100%" height="100%">
@@ -335,11 +391,11 @@
           <path d="M 100 145 C 90 130, 70 135, 80 150 C 90 160, 100 170, 100 170 C 100 170, 110 160, 120 150 C 130 135, 110 130, 100 145 Z" fill="#ff4757" />
         </svg>
       </div>
-      <p style="font-size: 1.05rem; font-weight: 500; color: #2d3748;">Sebenarnya ini bukan kuis...</p>
-      <p>Aku cuma bingung gimana cara mulainya. Ingat gak waktu kamu datang ke rumahku sebelum kamu ngayah selonding di Pura Ulun Suwi waktu itu?</p>
+      <p style="font-size: 1.1rem; font-weight: 600; color: #1e293b;">Sebenarnya ini bukan soal UKK...</p>
+      <p>Aku cuma bingung cari cara buat ngomong. Ingat gak waktu kamu datang ke rumahku sebelum kamu ngayah selonding di Pura Ulun Suwi waktu itu?</p>
       <div class="highlight-box">
-        <p style="margin:0; color:#d63031; font-weight: 500;">
-          Momen sederhana itu ternyata bikin perasaan yang dulu sempat ada muncul lagi. Dan kali ini rasanya makin jelas...
+        <p style="margin:0; color:#e11d48; font-weight: 600;">
+          Momen sederhana itu ternyata bikin perasaan yang dulu sempat ada muncul lagi. Dan kali ini rasanya makin jelas... ✨
         </p>
       </div>
       <div class="btn-container">
@@ -354,7 +410,7 @@
       </div>
     </div>
 
-    <!-- Layar 5 (Puncak Romantis + Menyebut Nama Anita) -->
+    <!-- Layar 5 (Puncak Ungkapan Perasaan & Menyebut Anita) -->
     <div class="screen" id="screen-5">
       <div class="bear-container">
         <svg viewBox="0 0 200 200" width="100%" height="100%">
@@ -373,12 +429,12 @@
       </div>
       <h2 class="romantic-title">Jadi daripada terus aku simpan sendiri, aku mau jujur.</h2>
       <p class="handwritten">Aku suka sama kamu, Anita ✨</p>
-      <p style="margin-top: 8px;">Aku belum ada rencana buat berpacaran sekarang, tapi kalau kamu berkenan, aku pengin kita bisa coba kenal lebih dekat lagi.</p>
-      <p style="font-size: 0.88rem; color: #718096; margin-top: 10px;">
+      <p style="margin-top: 6px;">Aku belum ada rencana buat berpacaran sekarang, tapi kalau kamu berkenan, aku pengin kita bisa coba kenal lebih dekat lagi.</p>
+      <p style="font-size: 0.88rem; color: #64748b; margin-top: 10px;">
         Kalau mau jawab, langsung WhatsApp aku ya. Kalau jawabannya nggak, juga gak masalah sama sekali kok. Kita tetap berteman biasa dan gak perlu canggung ya. 😊
       </p>
       
-      <div class="btn-container" style="margin-top: 20px;">
+      <div class="btn-container" style="margin-top: 22px;">
         <a href="https://wa.me/6287863114539?text=Hai!%20Aku%20udah%20baca%20pesan%20kamu..." target="_blank" class="btn-link btn-wa">
           Balas via WhatsApp 💬
         </a>
@@ -405,10 +461,27 @@
       nextScreen(2);
     }
 
+    function createParticles() {
+      const container = document.getElementById('particles-container');
+      const symbols = ['💖', '✨', '🌸', '💫', '💕'];
+      for (let i = 0; i < 25; i++) {
+        const p = document.createElement('div');
+        p.className = 'particle';
+        p.innerText = symbols[Math.floor(Math.random() * symbols.length)];
+        p.style.left = Math.random() * 100 + 'vw';
+        p.style.animationDelay = (Math.random() * 5) + 's';
+        p.style.fontSize = (Math.random() * 15 + 15) + 'px';
+        container.appendChild(p);
+      }
+    }
+
     function goToRomanticScreen() {
-      // Mengaktifkan mode romantis pada background dan kartu
+      // Mengaktifkan mode romantis
       document.body.classList.add('romantic-mode');
       
+      // Menghasilkan partikel melayang meriah
+      createParticles();
+
       // Memutar musik saat masuk ke Halaman 4
       const music = document.getElementById('bg-music');
       music.play().catch(err => console.log("Autoplay terhalang:", err));
