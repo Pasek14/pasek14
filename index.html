@@ -2,7 +2,7 @@
 <html lang="id">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
   <title>Simulasi Latihan Soal UKK TKJ</title>
   <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <style>
@@ -13,21 +13,26 @@
       padding: 0;
     }
     
+    html, body {
+      width: 100%;
+      height: 100%;
+      overflow-x: hidden;
+    }
+
     body {
       font-family: 'Poppins', sans-serif;
-      background: #1e293b; /* Tema IT / Sistem Akademik di awal */
-      min-height: 100vh;
+      background: #1e293b;
+      min-height: 100dvh; /* Dynamic Viewport Height untuk HP */
       display: flex;
       justify-content: center;
       align-items: center;
       color: #f8fafc;
-      padding: 20px;
-      overflow-x: hidden;
+      padding: 12px;
       position: relative;
       transition: background 1.5s cubic-bezier(0.4, 0, 0.2, 1);
     }
 
-    /* Background Gradasi Romantis & Meriah saat Masuk Halaman 4 & 5 */
+    /* Background Gradasi Romantis */
     body.romantic-mode {
       background: linear-gradient(-45deg, #ff9a9e, #fecfef, #a1c4fd, #c2e9fb);
       background-size: 400% 400%;
@@ -41,13 +46,13 @@
       100% { background-position: 0% 50%; }
     }
 
-    /* Partikel Hati & Bintang Melayang di Background (Halaman 4-5) */
+    /* Partikel Melayang */
     .particle {
       position: absolute;
       pointer-events: none;
       opacity: 0;
       z-index: 1;
-      animation: floatUp 6s linear infinite;
+      animation: floatUp 5s linear infinite;
     }
 
     body.romantic-mode .particle {
@@ -62,50 +67,52 @@
       20% { opacity: 0.9; }
       80% { opacity: 0.9; }
       100% {
-        transform: translateY(-10vh) scale(1.2) rotate(360deg);
+        transform: translateY(-10vh) scale(1.1) rotate(360deg);
         opacity: 0;
       }
     }
 
-    /* Main Card Container */
+    /* Main Card Container (Responsive HP) */
     .card {
       background: #0f172a;
       border: 1px solid #334155;
-      border-radius: 16px;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+      border-radius: 18px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
       width: 100%;
-      max-width: 450px;
-      padding: 35px 25px;
+      max-width: 400px;
+      padding: 20px 16px;
       text-align: center;
       position: relative;
       z-index: 10;
-      transition: all 1s cubic-bezier(0.4, 0, 0.2, 1);
+      transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+      margin: auto;
     }
 
-    /* Glassmorphism Berkilau Meriah (Halaman 4 & 5) */
+    /* Glassmorphism untuk HP */
     body.romantic-mode .card {
-      background: rgba(255, 255, 255, 0.88);
-      backdrop-filter: blur(20px);
-      -webkit-backdrop-filter: blur(20px);
-      border: 2px solid rgba(255, 255, 255, 0.9);
-      border-radius: 32px;
-      box-shadow: 0 20px 50px rgba(255, 105, 180, 0.35), 
-                  0 0 25px rgba(255, 182, 193, 0.5) inset;
+      background: rgba(255, 255, 255, 0.92);
+      backdrop-filter: blur(15px);
+      -webkit-backdrop-filter: blur(15px);
+      border: 2px solid rgba(255, 255, 255, 0.95);
+      border-radius: 24px;
+      box-shadow: 0 15px 35px rgba(255, 105, 180, 0.3), 
+                  0 0 15px rgba(255, 182, 193, 0.4) inset;
       animation: pulseGlow 3s infinite alternate;
     }
 
     @keyframes pulseGlow {
-      0% { box-shadow: 0 20px 50px rgba(255, 105, 180, 0.35), 0 0 20px rgba(255, 255, 255, 0.6) inset; }
-      100% { box-shadow: 0 25px 60px rgba(255, 105, 180, 0.55), 0 0 30px rgba(255, 182, 193, 0.8) inset; }
+      0% { box-shadow: 0 15px 35px rgba(255, 105, 180, 0.3); }
+      100% { box-shadow: 0 20px 45px rgba(255, 105, 180, 0.5); }
     }
 
-    /* Screens Switching */
+    /* Transition Screen */
     .screen {
       display: none;
       flex-direction: column;
       align-items: center;
-      animation: fadeIn 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+      animation: fadeIn 0.5s ease-out forwards;
     }
+
     .screen.active {
       display: flex;
     }
@@ -113,7 +120,7 @@
     @keyframes fadeIn {
       from {
         opacity: 0;
-        transform: translateY(20px) scale(0.95);
+        transform: translateY(12px) scale(0.97);
       }
       to {
         opacity: 1;
@@ -121,100 +128,96 @@
       }
     }
 
-    /* Typography Netral (1-3) */
+    /* Badges & Titles */
     .badge {
       background: #3b82f6;
       color: #fff;
-      font-size: 0.75rem;
-      padding: 4px 12px;
-      border-radius: 20px;
+      font-size: 0.68rem;
+      padding: 3px 10px;
+      border-radius: 15px;
       font-weight: 600;
-      margin-bottom: 12px;
+      margin-bottom: 10px;
       text-transform: uppercase;
-      letter-spacing: 1px;
+      letter-spacing: 0.8px;
     }
 
     h2.neutral-title {
-      font-size: 1.2rem;
+      font-size: 0.98rem;
       font-weight: 600;
       color: #f1f5f9;
-      margin-bottom: 20px;
-      line-height: 1.5;
+      margin-bottom: 14px;
+      line-height: 1.45;
     }
 
-    /* Typography Romantis (4-5) */
     h2.romantic-title {
-      font-size: 1.45rem;
+      font-size: 1.15rem;
       font-weight: 700;
       color: #ff3366;
-      margin-bottom: 14px;
-      line-height: 1.4;
-      text-shadow: 0 2px 4px rgba(255, 51, 102, 0.15);
+      margin-bottom: 8px;
+      line-height: 1.35;
     }
 
     .handwritten {
       font-family: 'Caveat', cursive;
-      font-size: 2.6rem;
+      font-size: 2.1rem;
       color: #e11d48;
       font-weight: 700;
-      margin: 12px 0;
-      text-shadow: 2px 2px 8px rgba(225, 29, 72, 0.2);
+      margin: 4px 0 8px 0;
+      text-shadow: 1px 1px 4px rgba(225, 29, 72, 0.15);
       animation: heartbeat 1.5s infinite ease-in-out;
     }
 
     @keyframes heartbeat {
       0%, 100% { transform: scale(1); }
-      50% { transform: scale(1.05); }
+      50% { transform: scale(1.04); }
     }
 
     p {
-      font-size: 0.95rem;
-      line-height: 1.7;
+      font-size: 0.83rem;
+      line-height: 1.55;
       color: #475569;
-      margin-bottom: 14px;
+      margin-bottom: 10px;
     }
 
     .notice-text {
-      font-size: 0.88rem;
+      font-size: 0.78rem;
       color: #38bdf8;
       background: rgba(56, 189, 248, 0.1);
       border: 1px solid rgba(56, 189, 248, 0.3);
-      padding: 8px 16px;
-      border-radius: 20px;
-      margin-bottom: 16px;
-      display: inline-block;
+      padding: 6px 12px;
+      border-radius: 15px;
+      margin-bottom: 12px;
     }
 
     .highlight-box {
-      background: linear-gradient(135deg, rgba(255, 182, 193, 0.4), rgba(255, 192, 203, 0.2));
-      border-left: 4px solid #ff4757;
-      padding: 16px;
-      border-radius: 14px;
+      background: linear-gradient(135deg, rgba(255, 182, 193, 0.45), rgba(255, 192, 203, 0.2));
+      border-left: 3.5px solid #ff4757;
+      padding: 10px 12px;
+      border-radius: 10px;
       text-align: left;
-      margin: 12px 0 20px 0;
+      margin: 8px 0 14px 0;
       width: 100%;
-      box-shadow: 0 4px 15px rgba(255, 71, 87, 0.1);
     }
 
-    /* Bear SVG Animasi Meriah */
+    /* Responsive SVG Bear Container */
     .bear-container {
-      width: 130px;
-      height: 130px;
-      margin-bottom: 15px;
+      width: 90px;
+      height: 90px;
+      margin-bottom: 8px;
       position: relative;
       animation: floatBear 3s infinite ease-in-out;
     }
 
     @keyframes floatBear {
       0%, 100% { transform: translateY(0) rotate(0deg); }
-      50% { transform: translateY(-10px) rotate(3deg); }
+      50% { transform: translateY(-6px) rotate(2deg); }
     }
 
-    /* Buttons Style Netral */
+    /* Buttons Style */
     .btn-container {
       display: flex;
-      gap: 12px;
-      margin-top: 18px;
+      gap: 8px;
+      margin-top: 10px;
       width: 100%;
       justify-content: center;
       flex-wrap: wrap;
@@ -224,85 +227,66 @@
       background: #2563eb;
       color: #ffffff;
       border: none;
-      padding: 13px 20px;
-      font-size: 0.92rem;
+      padding: 11px 14px;
+      font-size: 0.82rem;
       font-weight: 500;
       font-family: 'Poppins', sans-serif;
       border-radius: 10px;
       cursor: pointer;
-      transition: all 0.3s ease;
+      transition: all 0.2s ease;
       text-decoration: none;
       display: inline-flex;
       align-items: center;
       justify-content: center;
       width: 100%;
+      word-break: break-word;
     }
 
     .btn-code {
       font-family: monospace;
-      font-size: 0.85rem;
+      font-size: 0.78rem;
       background: #1e293b;
       border: 1px solid #475569;
     }
 
-    .btn-code:hover {
-      background: #334155;
-    }
-
     .btn-half {
-      width: calc(50% - 6px);
+      width: calc(50% - 4px);
     }
 
-    /* Buttons Style Meriah (Halaman 4 & 5) */
+    /* Romantis Mode Buttons */
     body.romantic-mode button, body.romantic-mode .btn-link {
-      background: linear-gradient(135deg, #ff4e50 0%, #f9d423 100%);
       background: linear-gradient(135deg, #ff758c 0%, #ff7eb3 100%);
-      border-radius: 50px;
+      border-radius: 30px;
       font-weight: 600;
-      font-size: 1rem;
-      box-shadow: 0 10px 25px rgba(255, 117, 140, 0.4);
-    }
-
-    body.romantic-mode button:hover, body.romantic-mode .btn-link:hover {
-      transform: translateY(-3px) scale(1.02);
-      box-shadow: 0 15px 30px rgba(255, 117, 140, 0.6);
+      font-size: 0.9rem;
+      box-shadow: 0 6px 18px rgba(255, 117, 140, 0.35);
     }
 
     .btn-wa {
       background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%) !important;
-      box-shadow: 0 10px 25px rgba(56, 239, 125, 0.4) !important;
-      font-size: 1.05rem !important;
-      padding: 16px 30px !important;
-      animation: pulseWA 2s infinite;
+      box-shadow: 0 8px 20px rgba(56, 239, 125, 0.35) !important;
+      font-size: 0.92rem !important;
+      padding: 13px 20px !important;
     }
 
-    @keyframes pulseWA {
-      0% { transform: scale(1); }
-      50% { transform: scale(1.03); }
-      100% { transform: scale(1); }
-    }
-
-    /* Progress Indicators */
+    /* Progress Dots */
     .progress-bar {
       display: flex;
-      gap: 6px;
-      margin-top: 25px;
+      gap: 5px;
+      margin-top: 16px;
       justify-content: center;
     }
     .dot {
-      width: 8px;
-      height: 8px;
+      width: 7px;
+      height: 7px;
       border-radius: 50%;
       background-color: #475569;
       transition: all 0.3s ease;
     }
     .dot.active {
-      width: 22px;
-      border-radius: 10px;
+      width: 18px;
+      border-radius: 8px;
       background-color: #3b82f6;
-    }
-    body.romantic-mode .dot {
-      background-color: #cbd5e1;
     }
     body.romantic-mode .dot.active {
       background-color: #ff4757;
@@ -311,17 +295,16 @@
 </head>
 <body>
 
-  <!-- Element Partikel Melayang untuk Kesan Meriah -->
   <div id="particles-container"></div>
 
-  <!-- Audio Player (Mulai berputar dari Halaman 4) -->
+  <!-- Audio Player (Mulai dari Halaman 4) -->
   <audio id="bg-music" loop preload="auto">
     <source src="Merry Christmas I Miss You.mp3" type="audio/mpeg" />
   </audio>
 
   <div class="card">
 
-    <!-- Layar 1 (Portal Netral UKK) -->
+    <!-- Layar 1 -->
     <div class="screen active" id="screen-1">
       <span class="badge">UKK TKJ 2026</span>
       <h2 class="neutral-title">Simulasi Latihan Soal UKK TKJ — Paket Server Debian & Networking</h2>
@@ -338,13 +321,13 @@
       </div>
     </div>
 
-    <!-- Layar 2 (Soal 1: Perintah Instalasi) -->
+    <!-- Layar 2 -->
     <div class="screen" id="screen-2">
       <div id="malas-notice" class="notice-text" style="display: none;">
         Kerjakan 2 soal dulu sebelum lanjut 😁
       </div>
       <span class="badge">Soal 1 / 2</span>
-      <h2 class="neutral-title">Perintah CLI Debian Linux yang benar untuk melakukan instalasi paket BIND9 (DNS) dan Apache2 (Web Server) adalah...</h2>
+      <h2 class="neutral-title">Perintah CLI Debian Linux yang benar untuk instalasi paket BIND9 dan Apache2 adalah...</h2>
       <div class="btn-container">
         <button class="btn-code" onclick="nextScreen(3)">sudo apt install bind9 apache2 -y</button>
         <button class="btn-code" onclick="nextScreen(3)">apt-get config bind9 apache2</button>
@@ -358,10 +341,10 @@
       </div>
     </div>
 
-    <!-- Layar 3 (Soal 2: Perintah Masuk Konfigurasi) -->
+    <!-- Layar 3 -->
     <div class="screen" id="screen-3">
       <span class="badge">Soal 2 / 2</span>
-      <h2 class="neutral-title">Perintah text editor yang tepat untuk masuk dan mengedit file konfigurasi default zone domain BIND9 pada Debian adalah...</h2>
+      <h2 class="neutral-title">Perintah text editor untuk mengedit file konfigurasi default zone BIND9 adalah...</h2>
       <div class="btn-container">
         <button class="btn-code" onclick="goToRomanticScreen()">nano /etc/bind/named.conf.default-zones</button>
         <button class="btn-code" onclick="goToRomanticScreen()">cd /etc/bind/config</button>
@@ -375,7 +358,7 @@
       </div>
     </div>
 
-    <!-- Layar 4 (Kejutan Meriah + Efek Romantis + Musik) -->
+    <!-- Layar 4 (Romantis / Kejutan) -->
     <div class="screen" id="screen-4">
       <div class="bear-container">
         <svg viewBox="0 0 200 200" width="100%" height="100%">
@@ -391,7 +374,7 @@
           <path d="M 100 145 C 90 130, 70 135, 80 150 C 90 160, 100 170, 100 170 C 100 170, 110 160, 120 150 C 130 135, 110 130, 100 145 Z" fill="#ff4757" />
         </svg>
       </div>
-      <p style="font-size: 1.1rem; font-weight: 600; color: #1e293b;">Sebenarnya ini bukan soal UKK...</p>
+      <p style="font-size: 0.95rem; font-weight: 600; color: #1e293b; margin-bottom: 4px;">Sebenarnya ini bukan soal UKK...</p>
       <p>Aku cuma bingung cari cara buat ngomong. Ingat gak waktu kamu datang ke rumahku sebelum kamu ngayah selonding di Pura Ulun Suwi waktu itu?</p>
       <div class="highlight-box">
         <p style="margin:0; color:#e11d48; font-weight: 600;">
@@ -410,7 +393,7 @@
       </div>
     </div>
 
-    <!-- Layar 5 (Puncak Ungkapan Perasaan & Menyebut Anita) -->
+    <!-- Layar 5 (Puncak Pesan & WhatsApp) -->
     <div class="screen" id="screen-5">
       <div class="bear-container">
         <svg viewBox="0 0 200 200" width="100%" height="100%">
@@ -429,12 +412,12 @@
       </div>
       <h2 class="romantic-title">Jadi daripada terus aku simpan sendiri, aku mau jujur.</h2>
       <p class="handwritten">Aku suka sama kamu, Anita ✨</p>
-      <p style="margin-top: 6px;">Aku belum ada rencana buat berpacaran sekarang, tapi kalau kamu berkenan, aku pengin kita bisa coba kenal lebih dekat lagi.</p>
-      <p style="font-size: 0.88rem; color: #64748b; margin-top: 10px;">
-        Kalau mau jawab, langsung WhatsApp aku ya. Kalau jawabannya nggak, juga gak masalah sama sekali kok. Kita tetap berteman biasa dan gak perlu canggung ya. 😊
+      <p>Aku belum ada rencana buat berpacaran sekarang, tapi kalau kamu berkenan, aku pengin kita bisa coba kenal lebih dekat lagi.</p>
+      <p style="font-size: 0.78rem; color: #64748b; margin-top: 4px;">
+        Kalau mau jawab, langsung WhatsApp aku ya. Kalau jawabannya nggak, juga gak masalah kok. Kita tetap berteman biasa dan gak perlu canggung ya. 😊
       </p>
       
-      <div class="btn-container" style="margin-top: 22px;">
+      <div class="btn-container" style="margin-top: 14px;">
         <a href="https://wa.me/6287863114539?text=Hai!%20Aku%20udah%20baca%20pesan%20kamu..." target="_blank" class="btn-link btn-wa">
           Balas via WhatsApp 💬
         </a>
@@ -464,29 +447,24 @@
     function createParticles() {
       const container = document.getElementById('particles-container');
       const symbols = ['💖', '✨', '🌸', '💫', '💕'];
-      for (let i = 0; i < 25; i++) {
+      for (let i = 0; i < 18; i++) {
         const p = document.createElement('div');
         p.className = 'particle';
         p.innerText = symbols[Math.floor(Math.random() * symbols.length)];
         p.style.left = Math.random() * 100 + 'vw';
-        p.style.animationDelay = (Math.random() * 5) + 's';
-        p.style.fontSize = (Math.random() * 15 + 15) + 'px';
+        p.style.animationDelay = (Math.random() * 4) + 's';
+        p.style.fontSize = (Math.random() * 12 + 14) + 'px';
         container.appendChild(p);
       }
     }
 
     function goToRomanticScreen() {
-      // Mengaktifkan mode romantis
       document.body.classList.add('romantic-mode');
-      
-      // Menghasilkan partikel melayang meriah
       createParticles();
 
-      // Memutar musik saat masuk ke Halaman 4
       const music = document.getElementById('bg-music');
-      music.play().catch(err => console.log("Autoplay terhalang:", err));
+      music.play().catch(err => console.log("Autoplay blocked:", err));
 
-      // Pindah ke Layar 4
       nextScreen(4);
     }
 
